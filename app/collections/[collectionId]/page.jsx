@@ -80,6 +80,17 @@ async function page({ params }) {
               </div>
             </div>
           ))}
+          <button
+            type="button"
+            className="w-full h-16 rounded-xl flex items-center p-4 gap-4 border-2 border-dashed"
+          >
+            <div className="w-5 h-5 rounded-md border-4 border-rose-500 bg-rose-500 flex items-center justify-center">
+              <Plus className="w-4 h-4 text-white stroke-3" />
+            </div>
+            <div>
+              <p className="text-base">Add task</p>
+            </div>
+          </button>
         </div>
       </div>
     </section>

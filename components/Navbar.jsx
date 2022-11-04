@@ -16,13 +16,29 @@ export default function Navbar() {
       </div>
       <div className="flex items-center gap-3">
         <div className="flex items-center gap-4 mr-4">
-          <button
-            type="button"
-            className="pr-4 px-3 text-rose-100 font-medium gap-1 h-10 bg-rose-500 flex items-center justify-center rounded-lg"
-          >
-            <PlusIcon className="w-5 h-5 stroke-1" />
-            Add
-          </button>
+          <div className="dropdown dropdown-end">
+            <label
+              tabIndex={0}
+              className="btn border-none normal-case pr-4 px-3 cursor-pointer hover:bg-rose-600 transition-all active:animate-ping text-rose-100 font-medium gap-1 h-10 min-h-[2.5rem] bg-rose-500 flex items-center justify-center rounded-lg"
+            >
+              <PlusIcon className="w-5 h-5 stroke-1" />
+              Add
+            </label>
+            <ul
+              tabIndex={0}
+              className="dropdown-content menu p-2 shadow-lg bg-base-100 rounded-box w-52"
+            >
+              <li>
+                <a>Task</a>
+              </li>
+              <li>
+                <a>Collection</a>
+              </li>
+              <li>
+                <a>Project</a>
+              </li>
+            </ul>
+          </div>
         </div>
         <div className="rounded-full overflow-hidden w-9 h-9">
           <img src="https://i.pravatar.cc/300" alt="avatar" />

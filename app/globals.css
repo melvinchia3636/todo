@@ -9,3 +9,7 @@
 .stroke-1 > * {
   stroke-width: 2;
 }
+
+.stroke-3 > * {
+  stroke-width: 3;
+}

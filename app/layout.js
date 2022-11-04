@@ -7,7 +7,7 @@ import Navbar from "../components/Navbar";
 
 export default function RootLayout({ children }) {
   return (
-    <html data-theme="light">
+    <html data-theme="main">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
