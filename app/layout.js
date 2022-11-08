@@ -1,11 +1,16 @@
+"use client";
+
 /* eslint-disable @next/next/no-page-custom-font */
 /* eslint-disable @next/next/no-head-element */
-import "./globals.css";
-import React from "react";
+import "./globals.scss";
+import React, { useState } from "react";
 import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
+import CreateModal from "../components/CreateModal";
 
 export default function RootLayout({ children }) {
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(true);
+
   return (
     <html data-theme="main">
       <head>
@@ -16,12 +21,19 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
       </head>
-      <body className="w-full h-screen flex p-4 pb-0 text-sm text-gray-700">
+      <body className="w-full h-screen flex p-4 pb-0 text-sm text-gray-600">
         <Sidebar />
         <main className="pb-0 pt-2 px-6 pr-2 flex-1 flex flex-col">
-          <Navbar />
+          <Navbar
+            isCreateModalOpen={isCreateModalOpen}
+            setIsCreateModalOpen={setIsCreateModalOpen}
+          />
           {children}
         </main>
+        <CreateModal
+          isOpen={isCreateModalOpen}
+          setIsOpen={setIsCreateModalOpen}
+        />
       </body>
     </html>
   );

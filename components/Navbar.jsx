@@ -2,8 +2,11 @@ import React from "react";
 import SearchIcon from "../public/assets/icons/search";
 import PlusIcon from "../public/assets/icons/plus";
 import MoreMenuVerticalIcon from "../public/assets/icons/more-menu-vertical";
+import ReceiptText from "../public/assets/icons/receipt-text";
+import CheckBoxListIcon from "../public/assets/icons/checkbox-list";
+import FolderIcon from "../public/assets/icons/folder";
 
-export default function Navbar() {
+export default function Navbar({ isCreateModalOpen, setIsCreateModalOpen }) {
   return (
     <nav className="w-full flex items-center justify-between border-b border-gray-200 pb-6">
       <div className="flex items-center gap-2 w-96 p-3 bg-gray-50 rounded-full">
@@ -29,13 +32,29 @@ export default function Navbar() {
               className="dropdown-content menu p-2 shadow-lg bg-base-100 rounded-box w-52"
             >
               <li>
-                <a>Task</a>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsCreateModalOpen(true);
+                    document.activeElement.blur();
+                  }}
+                  className="flex items-center gap-2"
+                >
+                  <ReceiptText className="w-5 h-5" />
+                  Task
+                </button>
               </li>
               <li>
-                <a>Collection</a>
+                <a className="flex items-center gap-2">
+                  <CheckBoxListIcon className="w-5 h-5" />
+                  Collection
+                </a>
               </li>
               <li>
-                <a>Project</a>
+                <a className="flex items-center gap-2">
+                  <FolderIcon className="w-5 h-5" />
+                  Project
+                </a>
               </li>
             </ul>
           </div>

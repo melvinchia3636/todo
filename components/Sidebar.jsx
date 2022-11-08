@@ -81,7 +81,7 @@ export default function Sidebar() {
         {ROUTES.map(({ name, Icon, path, hasCollapse }) => (
           <li
             key={name}
-            className={`h-[3.2rem] px-4 rounded-lg transition-all ${
+            className={`h-[3.2rem] px-4 rounded-lg transition-all hover:text-rose-500 ${
               currentRoute?.split("/")[1] === path.split("/")[1] &&
               "text-rose-500"
             }`}
