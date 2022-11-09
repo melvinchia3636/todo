@@ -4,6 +4,7 @@
 
 * {
   font-family: "Inter";
+  @apply focus:outline-none;
 }
 
 .stroke-1 > * {
@@ -152,15 +153,15 @@
   @apply bg-gray-50 rounded-t-md border-b-2 border-gray-200 relative w-full;
 
   & :is(input, textarea) {
-    @apply pb-2 pt-7 px-4 text-base block w-full relative bg-gray-50 focus:outline-none resize-none;
+    @apply pb-2 pt-7 px-4 rounded-t-md text-base block w-full relative bg-gray-50 resize-none;
   }
 
   & label {
-    @apply text-gray-400 text-base absolute pointer-events-none left-[16px] top-[18px] transition-all duration-200 z-[9999];
+    @apply text-gray-400 text-base absolute pointer-events-none left-[16px] top-[18px] transition-all duration-200 z-40;
   }
 
-  & :is(input, textarea):is(:focus, :valid) {
-    &:not([value="No due date"]) ~ label {
+  & :is(input, textarea):is(:focus, :valid, :disabled) {
+    &:not([value="No due date"]):not([value="Choose a collection"]) ~ label {
       @apply text-rose-500;
     }
     & ~ label {
@@ -183,13 +184,13 @@
   }
 }
 
-.date-picker-input {
+.picker-input {
   & input ~ label {
     @apply text-xs top-[8px];
   }
 
-  &.active .bar:before,
-  &.active .bar:after {
+  &:is(:focus,.active) .bar:before,
+  &:is(:focus,.active) .bar:after {
     @apply w-1/2;
   }
 }

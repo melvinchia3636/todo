@@ -243,6 +243,7 @@ import Multiply from "./multiply.jsx";
 import MusicNote from "./music-note.jsx";
 import Music from "./music.jsx";
 import NextCircle from "./next-circle.jsx";
+import NextWeek from "./next-week.jsx";
 import NoteTextMinus from "./note-text-minus.jsx";
 import NoteTextPlus from "./note-text-plus.jsx";
 import NoteText from "./note-text.jsx";
@@ -357,6 +358,8 @@ import TicketText from "./ticket-text.jsx";
 import Ticket from "./ticket.jsx";
 import Tickets from "./tickets.jsx";
 import Timer from "./timer.jsx";
+import Today from "./today.jsx";
+import Tomorrow from "./tomorrow.jsx";
 import TooltipText from "./tooltip-text.jsx";
 import Tooltip from "./tooltip.jsx";
 import Tooltips2 from "./tooltips-2.jsx";
@@ -625,6 +628,7 @@ export {
   MusicNote,
   Music,
   NextCircle,
+  NextWeek,
   NoteTextMinus,
   NoteTextPlus,
   NoteText,
@@ -739,6 +743,8 @@ export {
   Ticket,
   Tickets,
   Timer,
+  Today,
+  Tomorrow,
   TooltipText,
   Tooltip,
   Tooltips2,
