@@ -10,11 +10,11 @@ export default function Navbar({ isCreateModalOpen, setIsCreateModalOpen }) {
   return (
     <nav className="w-full flex items-center justify-between border-b border-gray-200 pb-6">
       <div className="flex items-center gap-2 w-96 p-3 bg-gray-50 rounded-full">
-        <SearchIcon className="w-5 h-5 stroke-1 text-gray-400" />
+        <SearchIcon className="w-5 h-5 stroke-1 text-gray-400 flex-shrink-0" />
         <input
           type="text"
           placeholder="Search anything..."
-          className="bg-transparent placeholder-gray-300"
+          className="bg-transparent placeholder-gray-400"
         />
       </div>
       <div className="flex items-center gap-3">
@@ -22,9 +22,9 @@ export default function Navbar({ isCreateModalOpen, setIsCreateModalOpen }) {
           <div className="dropdown dropdown-end">
             <label
               tabIndex={0}
-              className="btn border-none normal-case pr-4 px-3 cursor-pointer hover:bg-rose-600 transition-all active:animate-ping text-rose-100 font-medium gap-1 h-10 min-h-[2.5rem] bg-rose-500 flex items-center justify-center rounded-lg"
+              className="btn border-none normal-case pr-4 px-3 cursor-pointer hover:bg-rose-600 transition-all active:animate-ping text-rose-100 font-semibold gap-1 h-10 min-h-[2.5rem] bg-rose-500 flex items-center justify-center rounded-lg"
             >
-              <PlusIcon className="w-5 h-5 stroke-1" />
+              <PlusIcon className="w-4 h-4 stroke-3" />
               Add
             </label>
             <ul

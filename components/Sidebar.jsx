@@ -87,8 +87,8 @@ export default function Sidebar() {
             }`}
           >
             <Link href={path}>
-              <span className="flex items-center justify-between gap-5 font-medium">
-                <div className="flex items-center gap-5">
+              <span className="flex items-center justify-between gap-5">
+                <div className="flex items-center gap-5 font-medium">
                   <Icon className="w-5 h-5 stroke-1" />
                   {name}
                 </div>

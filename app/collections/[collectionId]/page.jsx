@@ -75,7 +75,7 @@ async function page({ params }) {
               <div>
                 <p className="text-base">{task.title}</p>
                 <p className="text-rose-500 text-xs">
-                  {moment(task.to_be_completed_at).fromNow()}
+                  {moment(task.due_date).fromNow()}
                 </p>
               </div>
             </div>
