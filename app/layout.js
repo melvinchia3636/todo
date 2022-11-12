@@ -2,14 +2,29 @@
 
 /* eslint-disable @next/next/no-page-custom-font */
 /* eslint-disable @next/next/no-head-element */
+import "react-toastify/dist/ReactToastify.css";
 import "./globals.scss";
+
 import React, { useState } from "react";
 import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
-import CreateModal from "../components/CreateModal";
+import CreateTask from "../components/create/task";
+import { toast, ToastContainer } from "react-toastify";
 
 export default function RootLayout({ children }) {
-  const [isCreateModalOpen, setIsCreateModalOpen] = useState(true);
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+
+  const successAddTask = () => {
+    toast.success("Task added successfully!", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
 
   return (
     <html data-theme="main">
@@ -30,10 +45,12 @@ export default function RootLayout({ children }) {
           />
           {children}
         </main>
-        <CreateModal
+        <CreateTask
           isOpen={isCreateModalOpen}
           setIsOpen={setIsCreateModalOpen}
+          success={successAddTask}
         />
+        <ToastContainer />
       </body>
     </html>
   );
