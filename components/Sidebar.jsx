@@ -3,30 +3,23 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
-import CheckBoxListIcon from "../public/assets/icons/checkbox-list";
-import HomeIcon from "../public/assets/icons/home";
-import CalendarIcon from "../public/assets/icons/calendar";
-import FolderIcon from "../public/assets/icons/folder";
-import SettingsCogIcon from "../public/assets/icons/settings-cog";
-import LogoutIcon from "../public/assets/icons/logout";
-import ChevronRightIcon from "../public/assets/icons/chevron-right";
 import Link from "next/link";
 
 const ROUTES = [
-  { name: "Home", Icon: HomeIcon, path: "/" },
+  { name: "Home", icon: "home_4_fill", path: "/" },
   {
     name: "Collections",
-    Icon: CheckBoxListIcon,
+    icon: "list_check_2_fill",
     path: "/collections",
     hasCollapse: true,
   },
   {
     name: "Projects",
-    Icon: FolderIcon,
+    icon: "folder_fill",
     path: "/projects",
     hasCollapse: true,
   },
-  { name: "Calendar", Icon: CalendarIcon, path: "/calendar" },
+  { name: "Calendar", icon: "calendar_fill", path: "/calendar" },
 ];
 
 export default function Sidebar() {
@@ -67,18 +60,21 @@ export default function Sidebar() {
       </h1>
       <ul className="mt-16 text-gray-400 flex flex-col flex-1 relative isolate">
         <div
-          className="w-full h-[3.2rem] rounded-lg transition-all bg-rose-100/80 absolute left-0 -translate-y-[1rem] z-[-1]"
+          className="w-full h-[3.2rem] rounded-lg transition-all bg-rose-100/80 absolute left-0 -translate-y-[0.8rem] z-[-1]"
           style={{
             top:
-              ROUTES.findIndex(
-                (route) =>
-                  currentRoute?.split("/")[1] === route.path.split("/")[1]
+              Math.max(
+                0,
+                ROUTES.findIndex(
+                  (route) =>
+                    currentRoute?.split("/")[1] === route.path.split("/")[1]
+                )
               ) *
                 3.2 +
               "rem",
           }}
         ></div>
-        {ROUTES.map(({ name, Icon, path, hasCollapse }) => (
+        {ROUTES.map(({ name, icon, path, hasCollapse }) => (
           <li
             key={name}
             className={`h-[3.2rem] px-4 rounded-lg transition-all hover:text-rose-500 ${
@@ -89,22 +85,22 @@ export default function Sidebar() {
             <Link href={path}>
               <span className="flex items-center justify-between gap-5">
                 <div className="flex items-center gap-5 font-medium">
-                  <Icon className="w-5 h-5 stroke-1" />
+                  <span className={`text-xl -mt-[2px] mgc_${icon}`} />
                   {name}
                 </div>
                 {hasCollapse && (
-                  <ChevronRightIcon className="w-5 h-5 stroke-1" />
+                  <span className="text-base -mt-[2px] mgc_right_fill" />
                 )}
               </span>
             </Link>
           </li>
         ))}
       </ul>
-      <ul className="mt-16 text-gray-400 flex flex-col gap-3">
+      <ul className="mt-16 text-gray-400 flex flex-col">
         <li className="py-3 px-4 rounded-lg">
           <Link href="/settings">
             <span className="flex items-center gap-5 font-medium">
-              <SettingsCogIcon className="w-5 h-5 stroke-1" />
+              <span className="text-xl -mt-[2px] mgc_settings_1_fill" />
               Settings
             </span>
           </Link>
@@ -112,7 +108,7 @@ export default function Sidebar() {
         <li className="py-3 px-4 rounded-lg">
           <Link href="/logout">
             <span className="flex items-center gap-5 font-medium">
-              <LogoutIcon className="w-5 h-5 stroke-1" />
+              <span className="text-xl -mt-[2px] mgc_exit_door_fill" />
               Log out
             </span>
           </Link>

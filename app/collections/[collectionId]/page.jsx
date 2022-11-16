@@ -23,7 +23,7 @@ async function getTasks(collectionId) {
 async function page({ params }) {
   const { collection, tasks } = await getTasks(params.collectionId);
   return (
-    <section className="w-full px-16 pt-8 overflow-scroll">
+    <section className="w-full px-16 py-8 overflow-scroll">
       <div className="w-full flex items-center gap-2 mt-8 mb-4">
         <Link href="/collections">
           <span className="text-gray-400 font-medium -mt-[2px] block">

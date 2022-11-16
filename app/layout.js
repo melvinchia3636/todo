@@ -3,7 +3,8 @@
 /* eslint-disable @next/next/no-page-custom-font */
 /* eslint-disable @next/next/no-head-element */
 import "react-toastify/dist/ReactToastify.css";
-import "./globals.scss";
+import "../public/assets/fonts/MingCute.css";
+import "../public/styles/globals.scss";
 
 import React, { useState } from "react";
 import Sidebar from "../components/Sidebar";

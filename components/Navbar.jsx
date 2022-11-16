@@ -1,16 +1,11 @@
 import React from "react";
-import SearchIcon from "../public/assets/icons/search";
-import PlusIcon from "../public/assets/icons/plus";
-import MoreMenuVerticalIcon from "../public/assets/icons/more-menu-vertical";
-import ReceiptText from "../public/assets/icons/receipt-text";
-import CheckBoxListIcon from "../public/assets/icons/checkbox-list";
-import FolderIcon from "../public/assets/icons/folder";
+import { Plus } from "../public/assets/icons";
 
 export default function Navbar({ isCreateModalOpen, setIsCreateModalOpen }) {
   return (
     <nav className="w-full flex items-center justify-between border-b border-gray-200 pb-6">
       <div className="flex items-center gap-2 w-96 p-3 bg-gray-50 rounded-full">
-        <SearchIcon className="w-5 h-5 stroke-1 text-gray-400 flex-shrink-0" />
+        <span className="text-xl -mt-[2px] mgc_search_line text-gray-400" />
         <input
           type="text"
           placeholder="Search anything..."
@@ -24,7 +19,7 @@ export default function Navbar({ isCreateModalOpen, setIsCreateModalOpen }) {
               tabIndex={0}
               className="btn border-none normal-case pr-4 px-3 cursor-pointer hover:bg-rose-600 transition-all active:animate-ping text-rose-100 font-semibold gap-1 h-10 min-h-[2.5rem] bg-rose-500 flex items-center justify-center rounded-lg"
             >
-              <PlusIcon className="w-4 h-4 stroke-3" />
+              <Plus className="w-4 h-4 mr-1 stroke-3" />
               Add
             </label>
             <ul
@@ -40,19 +35,19 @@ export default function Navbar({ isCreateModalOpen, setIsCreateModalOpen }) {
                   }}
                   className="flex items-center gap-2"
                 >
-                  <ReceiptText className="w-5 h-5" />
+                  <span className="text-xl -mt-[2px] mgc_coupon_fill" />
                   Task
                 </button>
               </li>
               <li>
                 <a className="flex items-center gap-2">
-                  <CheckBoxListIcon className="w-5 h-5" />
+                  <span className="text-xl -mt-[2px] mgc_list_check_2_fill" />
                   Collection
                 </a>
               </li>
               <li>
                 <a className="flex items-center gap-2">
-                  <FolderIcon className="w-5 h-5" />
+                  <span className="text-xl -mt-[2px] mgc_folder_fill" />
                   Project
                 </a>
               </li>
@@ -66,7 +61,7 @@ export default function Navbar({ isCreateModalOpen, setIsCreateModalOpen }) {
           <div className="font-medium text-base">John Davidson</div>
           <div className="text-gray-400 text-xs">johndavidson@gmail.com</div>
         </div>
-        <MoreMenuVerticalIcon className="w-8 h-8 stroke-1" />
+        <span className="text-xl -mt-[2px] mgc_more_2_fill" />
       </div>
     </nav>
   );

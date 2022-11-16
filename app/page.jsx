@@ -1,10 +1,33 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
-import { ArrowRight, Code, User } from "../public/assets/icons";
+import * as icons from "../public/assets/icons";
+import { ArrowRight } from "../public/assets/icons";
+import PocketBase from "pocketbase";
+import moment from "moment";
 
-function Index() {
+export const fetchCache = "no-store";
+
+async function getCollection() {
+  const client = new PocketBase("http://127.0.0.1:8090");
+  const collections = await client.records.getList("collections");
+
+  for (const collection of collections?.items) {
+    // get unfinished tasks
+    const tasks = await client.records.getList("tasks", 1, 100, {
+      filter: `collection = "${collection.id}" && is_done = false`,
+    });
+
+    collection.tasks = tasks?.items;
+  }
+
+  return collections?.items;
+}
+
+async function Home() {
+  const collections = await getCollection();
+
   return (
-    <section className="w-full px-16 pt-8 overflow-scroll">
+    <section className="w-full px-16 py-8 overflow-scroll">
       <div className="w-full flex items-center justify-between mt-8 mb-4">
         <h1 className="text-lg font-medium text-rose-500">Dashboard</h1>
       </div>
@@ -27,76 +50,41 @@ function Index() {
           Projects Overview
         </button>
       </div>
-      <div className="w-full rounded-2xl overflow-hidden mt-6">
-        <div className="bg-rose-100/80 p-4 flex items-center gap-4">
-          <div className="p-2 bg-rose-500 inline-block rounded-lg">
-            <Code className="w-4 h-4 text-rose-50 stroke-1" />
-          </div>
-          <p className="text-rose-500 text-lg font-medium">Programming</p>
-        </div>
-        <div className="w-full p-4 flex flex-col gap-5 bg-gray-50">
-          <div className="flex items-center gap-4">
-            <div className="w-5 h-5 rounded-md border-2 border-rose-500"></div>
-            <div>
-              <p className="text-base">Fisish the project</p>
-              <p className="text-rose-500 text-xs">Today 5:00</p>
+
+      {collections.map((e) => (
+        <div key={e.id} className="w-full rounded-2xl overflow-hidden mt-6">
+          <div className="bg-rose-100/80 p-4 flex items-center gap-4">
+            <div className="p-2 bg-rose-500 inline-block rounded-lg">
+              {React.createElement(
+                icons[
+                  e.icon.replace(/(?:-|^)([a-z0-9])/g, (g) =>
+                    (g[1] || g[0])?.toUpperCase()
+                  )
+                ],
+                {
+                  className: "w-4 h-4 text-rose-50 stroke-1",
+                }
+              )}
             </div>
+            <p className="text-rose-500 text-lg font-medium">{e.name}</p>
           </div>
-          <div className="flex items-center gap-4">
-            <div className="w-5 h-5 rounded-md border-2 border-rose-500"></div>
-            <div>
-              <p className="text-base">Learn NextJS 13</p>
-              <p className="text-rose-500 text-xs">Today</p>
-            </div>
-          </div>
-          <div className="w-full border-b border-gray-200"></div>
-          <div className="w-full flex items-center justify-center">
-            <button
-              type="button"
-              className="px-4 py-2 rounded-lg text-gray-400 flex items-center gap-2"
-            >
-              Go to Collection
-              <ArrowRight className="w-4 h-4 stroke-1" />
-            </button>
-          </div>
-        </div>
-      </div>
-      <div className="w-full rounded-2xl overflow-hidden mt-6">
-        <div className="bg-rose-100/80 p-4 flex items-center gap-4">
-          <div className="p-2 bg-rose-500 inline-block rounded-lg">
-            <User className="w-4 h-4 text-rose-50" />
-          </div>
-          <p className="text-rose-500 text-lg font-medium">Personal</p>
-        </div>
-        <div className="w-full p-4 flex flex-col gap-5 bg-gray-50">
-          <div className="flex items-center gap-4">
-            <div className="w-5 h-5 rounded-md border-2 border-rose-500"></div>
-            <div>
-              <p className="text-base">Prepare items for travelling</p>
-              <p className="text-rose-500 text-xs">Today 20:00</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-4">
-            <div className="w-5 h-5 rounded-md border-2 border-rose-500"></div>
-            <div>
-              <p className="text-base">Do homeworks</p>
-              <p className="text-rose-500 text-xs">Today</p>
-            </div>
-          </div>
-          <div className="w-full border-b border-gray-200"></div>
-          <div className="w-full flex items-center justify-center">
-            <button
-              type="button"
-              className="px-4 py-2 rounded-lg text-gray-400 flex items-center gap-2"
-            >
-              Go to Collection
-              <ArrowRight className="w-4 h-4 stroke-1" />
-            </button>
+          <div className="w-full p-4 flex flex-col gap-5 bg-gray-50">
+            {e.tasks.map((task) => (
+              <div key={task.id} className="flex items-center gap-4">
+                <div className="w-5 h-5 rounded-md border-2 border-rose-500"></div>
+                <div>
+                  <p className="text-base">{task.title}</p>
+                  <p className="text-rose-500 text-xs">
+                    {task.due_date && moment(task.due_date).fromNow()}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-      </div>
+      ))}
     </section>
   );
 }
 
-export default Index;
+export default Home;

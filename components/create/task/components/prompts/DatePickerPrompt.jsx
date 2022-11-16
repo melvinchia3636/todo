@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
-import { ChevronLeft, ChevronRight } from "../../../public/assets/icons";
+import { ChevronLeft, ChevronRight } from "../../../../../public/assets/icons";
 
 export default function DatePickerPrompt({
   isOpen,

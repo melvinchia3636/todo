@@ -1,6 +1,6 @@
 import React from "react";
-import { CheckboxList } from "../../../public/assets/icons";
-import * as icons from "../../../public/assets/icons";
+import { CheckboxList } from "../../../../../public/assets/icons";
+import * as icons from "../../../../../public/assets/icons";
 
 export default function CollectionChooserPrompt(props) {
   return (
@@ -42,7 +42,7 @@ export default function CollectionChooserPrompt(props) {
                 className={`flex flex-shrink-0 items-center gap-2 p-3 rounded-lg transition-all ${
                   props.targetCollection?.id === collection.id
                     ? "bg-rose-500 text-white hover:bg-rose-600"
-                    : "bg-gray-50 text-gray-500 hover:bg-gray-100"
+                    : "bg-gray-50 text-gray-400 hover:bg-gray-100"
                 }`}
               >
                 {React.createElement(
@@ -52,7 +52,7 @@ export default function CollectionChooserPrompt(props) {
                     )
                   ],
                   {
-                    className: "w-6 h-6",
+                    className: "w-5 h-5",
                   }
                 )}
                 <span>{collection.name}</span>
