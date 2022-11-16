@@ -9,8 +9,11 @@ import TaskTitleInput from "./components/inputs/TaskTitleInput";
 import TaskNotesInput from "./components/inputs/TaskNotesInput";
 import TaskDueDateInput from "./components/inputs/TaskDueDateInput";
 import TaskCollectionInput from "./components/inputs/TaskCollectionInput";
+import { useRouter } from "next/navigation";
 
 function CreateModal({ isOpen, setIsOpen, success }) {
+  const router = useRouter();
+
   const [isDatePickerOpen, setDatePickerOpen] = useState(false);
   const [isCollectionChooserOpen, setCollectionChooserOpen] = useState(false);
   const [titleError, setTitleError] = useState("");
@@ -70,6 +73,8 @@ function CreateModal({ isOpen, setIsOpen, success }) {
       await db.records.create("tasks", task);
       clearAllAndClose();
       success();
+
+      router.refresh();
     }
   };
 
