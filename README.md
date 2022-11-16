@@ -1,4 +1,4 @@
-<center><h1 align="center">Todo. - The Savior of Procrastination</h1></center>
+<center><h1 align="center">🗒️ Todo. - The Savior of Procrastination</h1></center>
 
 <p align="center">A site aimed to help people keep track of their daily task and project progress.</p>
 
