@@ -1,18 +1,23 @@
-import React, { useState, useEffect } from "react";
-import moment from "moment";
-import { ChevronLeft, ChevronRight } from "../../../../../public/assets/icons";
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable react/jsx-one-expression-per-line */
+/* eslint-disable react/prop-types */
+/* eslint-disable no-plusplus */
+/* eslint-disable jsx-a11y/control-has-associated-label */
+/* eslint-disable operator-linebreak */
+/* eslint-disable react/jsx-curly-newline */
+/* eslint-disable implicit-arrow-linebreak */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import React, { useState, useEffect } from 'react';
+import moment from 'moment';
+import { ChevronLeft, ChevronRight } from '../../../../../public/assets/icons';
 
-export default function DatePickerPrompt({
-  isOpen,
-  setOpen,
-  dueDate,
-  setDueDate,
-}) {
+export default function DatePickerPrompt({ isOpen, setOpen, setDueDate }) {
   const [year, setYear] = useState(moment().year());
   const [month, setMonth] = useState(moment().month());
   const [calendar, setCalendar] = useState([]);
   const [selectedDate, setSelectedDate] = useState(
-    moment().year(year).month(month).date(moment().date())
+    moment().year(year).month(month).date(moment().date()),
   );
 
   useEffect(() => {
@@ -59,19 +64,19 @@ export default function DatePickerPrompt({
   return (
     <div
       className={`w-full h-screen fixed flex items-center justify-center overscroll-contain ${
-        isOpen ? "z-[9999]" : "z-[-1] transition-all delay-500"
+        isOpen ? 'z-[9999]' : 'z-[-1] transition-all delay-500'
       } top-0 left-0`}
     >
       <button
         type="button"
         onClick={() => setOpen(false)}
         className={`w-full h-full absolute top-0 left-0 transition-colors duration-500 ${
-          isOpen ? "bg-gray-900/20" : "bg-transparent"
+          isOpen ? 'bg-gray-900/20' : 'bg-transparent'
         }`}
       />
       <div
         className={`bg-white rounded-2xl shadow-xl relative transition-all duration-500 p-8 pb-4 ${
-          isOpen ? "translate-x-0" : "translate-x-[500%]"
+          isOpen ? 'translate-x-0' : 'translate-x-[500%]'
         }`}
       >
         <div className="w-full select-none date-picker">
@@ -90,7 +95,7 @@ export default function DatePickerPrompt({
               <ChevronLeft className="w-6 h-6" />
             </button>
             <h2 className="text-center font-semibold text-lg">
-              {moment().month(month).format("MMMM")} {year}
+              {moment().month(month).format('MMMM')} {year}
             </h2>
             <button
               type="button"
@@ -133,20 +138,20 @@ export default function DatePickerPrompt({
                             .hour(0)
                             .minute(0)
                             .second(0)
-                            .millisecond(0)
+                            .millisecond(0),
                         )
                       }
                       className={`text-center rounded-lg ${
-                        day && "cursor-pointer hover:bg-rose-100"
-                      } transition-all ${!j && "font-bold"} ${
+                        day && 'cursor-pointer hover:bg-rose-100'
+                      } transition-all ${!j && 'font-bold'} ${
                         selectedDate.year() === year &&
                         selectedDate.month() === month &&
                         selectedDate.date() === day &&
-                        "bg-rose-500 text-rose-50 font-medium hover:bg-rose-500"
+                        'bg-rose-500 text-rose-50 font-medium hover:bg-rose-500'
                       }`}
                       key={j}
                     >
-                      {day || ""}
+                      {day || ''}
                     </td>
                   ))}
                 </tr>

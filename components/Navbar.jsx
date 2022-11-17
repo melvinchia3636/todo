@@ -1,7 +1,10 @@
-import React from "react";
-import { Plus } from "../public/assets/icons";
+/* eslint-disable react/prop-types */
+/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import React from 'react';
+import { Plus } from '../public/assets/icons';
 
-export default function Navbar({ isCreateModalOpen, setIsCreateModalOpen }) {
+export default function Navbar({ setIsCreateModalOpen }) {
   return (
     <nav className="w-full flex items-center justify-between border-b border-gray-200 pb-6">
       <div className="flex items-center gap-2 w-96 p-3 bg-gray-50 rounded-full">
@@ -40,13 +43,13 @@ export default function Navbar({ isCreateModalOpen, setIsCreateModalOpen }) {
                 </button>
               </li>
               <li>
-                <a className="flex items-center gap-2">
+                <a href="/" className="flex items-center gap-2">
                   <span className="text-xl -mt-[2px] mgc_list_check_2_fill" />
                   Collection
                 </a>
               </li>
               <li>
-                <a className="flex items-center gap-2">
+                <a href="/" className="flex items-center gap-2">
                   <span className="text-xl -mt-[2px] mgc_folder_fill" />
                   Project
                 </a>
