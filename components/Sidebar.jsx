@@ -1,26 +1,25 @@
-"use client";
-
-/* eslint-disable @next/next/no-html-link-for-pages */
-/* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+/* eslint-disable operator-linebreak */
+/* eslint-disable implicit-arrow-linebreak */
+/* eslint-disable object-curly-newline */
+import React from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const ROUTES = [
-  { name: "Home", icon: "home_4_fill", path: "/" },
+  { name: 'Home', icon: 'home_4_fill', path: '/' },
   {
-    name: "Collections",
-    icon: "list_check_2_fill",
-    path: "/collections",
+    name: 'Collections',
+    icon: 'list_check_2_fill',
+    path: '/collections',
     hasCollapse: true,
   },
   {
-    name: "Projects",
-    icon: "folder_fill",
-    path: "/projects",
+    name: 'Projects',
+    icon: 'folder_fill',
+    path: '/projects',
     hasCollapse: true,
   },
-  { name: "Calendar", icon: "calendar_fill", path: "/calendar" },
+  { name: 'Calendar', icon: 'calendar_fill', path: '/calendar' },
 ];
 
 export default function Sidebar() {
@@ -29,30 +28,30 @@ export default function Sidebar() {
   return (
     <aside className="h-[calc(100%-1rem)] p-2 pr-4 w-[24%] border-r border-gray-200 flex flex-col">
       <h1 className="font-semibold text-2xl">
-        .to<span className="text-rose-500">do</span>
+        .to
+        <span className="text-rose-500">do</span>
       </h1>
       <ul className="mt-16 text-gray-400 flex flex-col flex-1 relative isolate">
         <div
           className="w-full h-[3.2rem] rounded-lg transition-all bg-rose-100/80 absolute left-0 -translate-y-[0.8rem] z-[-1]"
           style={{
-            top:
+            top: `${
               Math.max(
                 0,
                 ROUTES.findIndex(
                   (route) =>
-                    currentRoute?.split("/")[1] === route.path.split("/")[1]
-                )
-              ) *
-                3.2 +
-              "rem",
+                    currentRoute?.split('/')[1] === route.path.split('/')[1],
+                ),
+              ) * 3.2
+            }rem`,
           }}
-        ></div>
+        />
         {ROUTES.map(({ name, icon, path, hasCollapse }) => (
           <li
             key={name}
             className={`h-[3.2rem] px-4 rounded-lg transition-all hover:text-rose-500 ${
-              currentRoute?.split("/")[1] === path.split("/")[1] &&
-              "text-rose-500"
+              currentRoute?.split('/')[1] === path.split('/')[1] &&
+              'text-rose-500'
             }`}
           >
             <Link href={path}>

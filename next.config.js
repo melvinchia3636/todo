@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const path = require("path");
+const path = require('path');
 
 const nextConfig = {
   reactStrictMode: true,
@@ -8,7 +8,7 @@ const nextConfig = {
     appDir: true,
   },
   sassOptions: {
-    includePaths: [path.join(__dirname, "components")],
+    includePaths: [path.join(__dirname, 'components')],
   },
 };
 
