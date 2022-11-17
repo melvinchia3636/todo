@@ -1,22 +1,22 @@
-import React from "react";
-import PocketBase from "pocketbase";
-import * as icons from "../../public/assets/icons";
-import Link from "next/link";
+import React from 'react';
+import PocketBase from 'pocketbase';
+import Link from 'next/link';
+import * as icons from '../../public/assets/icons';
 
-export const fetchCache = "force-no-store",
-  dynamic = "force-dynamic",
-  revalidate = 0;
+export const fetchCache = 'force-no-store';
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 async function getCollection() {
-  const client = new PocketBase("http://127.0.0.1:8090");
-  const collections = await client.records.getList("collections");
+  const client = new PocketBase('http://127.0.0.1:8090');
+  const collections = await client.records.getList('collections');
 
-  for (const collection of collections?.items) {
-    const finishedTasks = await client.records.getFullList("tasks", 100000, {
+  for (const collection of collections.items) {
+    const finishedTasks = await client.records.getFullList('tasks', 100000, {
       filter: `collection = "${collection.id}" && is_done = true`,
     });
 
-    const totalTasks = await client.records.getFullList("tasks", 100000, {
+    const totalTasks = await client.records.getFullList('tasks', 100000, {
       filter: `collection = "${collection.id}"`,
     });
 
@@ -35,12 +35,12 @@ function Collection({ data }) {
           {React.createElement(
             icons[
               data.icon.replace(/(?:-|^)([a-z0-9])/g, (g) =>
-                (g[1] || g[0])?.toUpperCase()
+                (g[1] || g[0])?.toUpperCase(),
               )
             ],
             {
-              className: "w-5 h-5 text-rose-500",
-            }
+              className: 'w-5 h-5 text-rose-500',
+            },
           )}
         </div>
 
@@ -55,18 +55,18 @@ function Collection({ data }) {
             <div
               className="radial-progress absolute top-0 left-0 text-rose-100"
               style={{
-                "--value": 100,
-                "--size": "1.5rem",
-                "--thickness": "4px",
+                '--value': 100,
+                '--size': '1.5rem',
+                '--thickness': '4px',
               }}
             />
             {data.finishedTask > 0 && (
               <div
                 className="radial-progress absolute top-0 left-0 text-rose-500"
                 style={{
-                  "--value": (data.finishedTask / data.totalTask) * 100,
-                  "--size": "1.5rem",
-                  "--thickness": "4px",
+                  '--value': (data.finishedTask / data.totalTask) * 100,
+                  '--size': '1.5rem',
+                  '--thickness': '4px',
                 }}
               />
             )}

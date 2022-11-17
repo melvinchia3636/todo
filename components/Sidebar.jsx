@@ -1,6 +1,3 @@
-/* eslint-disable operator-linebreak */
-/* eslint-disable implicit-arrow-linebreak */
-/* eslint-disable object-curly-newline */
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
