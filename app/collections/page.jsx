@@ -3,7 +3,9 @@ import PocketBase from "pocketbase";
 import * as icons from "../../public/assets/icons";
 import Link from "next/link";
 
-export const fetchCache = "no-store";
+export const fetchCache = "force-no-store",
+  dynamic = "force-dynamic",
+  revalidate = 0;
 
 async function getCollection() {
   const client = new PocketBase("http://127.0.0.1:8090");
@@ -14,6 +16,7 @@ async function getCollection() {
 
 async function Collections() {
   const collections = await getCollection();
+
   return (
     <section className="w-full px-16 pb-8 overflow-scroll">
       <div className="w-full flex items-center justify-between mt-8 mb-4">

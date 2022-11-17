@@ -5,7 +5,9 @@ import Link from "next/link";
 import * as icons from "../../../public/assets/icons";
 import moment from "moment";
 
-export const fetchCache = "no-store";
+export const fetchCache = "force-no-store",
+  dynamic = "force-dynamic",
+  revalidate = 0;
 
 async function getTasks(collectionId) {
   const client = new PocketBase("http://127.0.0.1:8090");
