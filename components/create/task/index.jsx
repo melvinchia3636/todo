@@ -54,9 +54,13 @@ function CreateModal({ isOpen, setIsOpen, success }) {
   };
 
   const fetchCollections = async () => {
-    const db = new PocketBase("http://127.0.0.1:8090");
-    const collections = await db.records.getList("collections", 1, 50);
-    return collections.items;
+    try {
+      const db = new PocketBase("http://127.0.0.1:8090");
+      const collections = await db.records.getList("collections", 1, 50);
+      return collections.items;
+    } catch {
+      return [];
+    }
   };
 
   const submitTask = async () => {

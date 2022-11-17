@@ -4,6 +4,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const ROUTES = [
   { name: "Home", icon: "home_4_fill", path: "/" },
@@ -23,35 +24,7 @@ const ROUTES = [
 ];
 
 export default function Sidebar() {
-  const [currentRoute, setCurrentRoute] = useState(window.location.pathanme);
-
-  useEffect(() => {
-    (() => {
-      let oldPushState = history.pushState;
-      history.pushState = function pushState() {
-        let ret = oldPushState.apply(this, arguments);
-        window.dispatchEvent(new Event("pushstate"));
-        window.dispatchEvent(new Event("locationchange"));
-        return ret;
-      };
-
-      let oldReplaceState = history.replaceState;
-      history.replaceState = function replaceState() {
-        let ret = oldReplaceState.apply(this, arguments);
-        window.dispatchEvent(new Event("replacestate"));
-        window.dispatchEvent(new Event("locationchange"));
-        return ret;
-      };
-
-      window.addEventListener("popstate", () => {
-        window.dispatchEvent(new Event("locationchange"));
-      });
-    })();
-
-    window.addEventListener("locationchange", function () {
-      setCurrentRoute(window.location.pathname);
-    });
-  }, []);
+  const currentRoute = usePathname();
 
   return (
     <aside className="h-[calc(100%-1rem)] p-2 pr-4 w-[24%] border-r border-gray-200 flex flex-col">

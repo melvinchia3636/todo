@@ -1,11 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import * as icons from "../public/assets/icons";
-import { ArrowRight } from "../public/assets/icons";
 import PocketBase from "pocketbase";
 import moment from "moment";
 
-export const fetchCache = "no-store";
+export const fetchCache = "force-no-store",
+  dynamic = "force-dynamic",
+  revalidate = 0;
 
 async function getCollection() {
   const client = new PocketBase("http://127.0.0.1:8090");
