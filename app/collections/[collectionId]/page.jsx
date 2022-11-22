@@ -1,10 +1,10 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import PocketBase from 'pocketbase';
-import { Plus } from '../../../public/assets/icons';
 import * as icons from '../../../public/assets/icons';
-import Task from '../../../components/taskList/Task';
-import Header from '../../../components/taskList/Header';
+import Header from '../../components/taskList/Header';
+import AddTaskButton from '../../components/taskList/AddTaskButton';
+import TaskItemList from '../../components/taskList/TaskItemList';
 
 export const fetchCache = 'force-no-store';
 export const dynamic = 'force-dynamic';
@@ -29,9 +29,10 @@ async function page({ params }) {
     <section className="w-full px-16 py-8 overflow-scroll">
       <Header collection={collection} />
       <div className="flex flex-col w-full gap-4 mt-10">
+        <AddTaskButton collectionId={collection.id} />
         <header className="flex items-center justify-between w-full">
           <h3 className="font-medium text-gray-400">
-            Pending Tasks - {tasks?.filter((task) => !task.completed).length}
+            Pending Tasks - {tasks?.filter((task) => !task.is_done).length}
           </h3>
           <button
             type="button"
@@ -41,22 +42,20 @@ async function page({ params }) {
             Sort
           </button>
         </header>
-        <div className="flex flex-col w-full gap-4">
-          {tasks?.map((task) => (
-            <Task key={task.id} task={task} />
-          ))}
+        <TaskItemList tasks={tasks.filter((task) => !task.is_done)} />
+        <header className="flex items-center justify-between w-full">
+          <h3 className="font-medium text-gray-400">
+            Completed Tasks - {tasks?.filter((task) => task.is_done).length}
+          </h3>
           <button
             type="button"
-            className="w-full h-16 rounded-xl flex items-center p-4 gap-4 border-2 border-dashed"
+            className="px-4 py-2 rounded-lg text-gray-400 font-medium gap-2 flex items-center"
           >
-            <div className="w-5 h-5 rounded-md border-4 border-rose-500 bg-rose-500 flex items-center justify-center">
-              <Plus className="w-4 h-4 text-white stroke-3" />
-            </div>
-            <div>
-              <p className="text-base">Add task</p>
-            </div>
+            <icons.Sort className="w-4 h-4" />
+            Sort
           </button>
-        </div>
+        </header>
+        <TaskItemList tasks={tasks.filter((task) => task.is_done)} />
       </div>
     </section>
   );

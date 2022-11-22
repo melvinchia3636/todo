@@ -6,9 +6,9 @@ import '../public/styles/globals.scss';
 
 import React, { useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
-import Sidebar from '../components/Sidebar';
-import Navbar from '../components/Navbar';
-import CreateTask from '../components/create/task';
+import Sidebar from './components/Sidebar';
+import Navbar from './components/Navbar';
+import CreateTask from './components/create/task';
 
 export default function RootLayout({ children }) {
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
