@@ -35,7 +35,7 @@
     border-radius: 50%;
     position: absolute;
     display: block;
-    @apply bg-orange-500;
+    @apply bg-custom-500;
     top: 37px;
     left: 19px;
     transform: translate(-18px, -18px);
@@ -166,7 +166,7 @@
 
   & :is(input, textarea):is(:focus, :valid, :disabled) {
     &:not([value="No due date"]):not([value="Pick a collection"]) ~ label {
-      @apply text-orange-500;
+      @apply text-custom-500;
     }
     & ~ label {
       @apply text-xs top-[8px];
@@ -179,7 +179,7 @@
 
   & .bar:before,
   & .bar:after {
-    @apply content-[""] h-[2px] w-0 -bottom-[2px] absolute bg-orange-500 transition-all duration-200 z-[9999];
+    @apply content-[""] h-[2px] w-0 -bottom-[2px] absolute bg-custom-500 transition-all duration-200 z-[9999];
   }
 
   & :is(input, textarea):focus ~ .bar:before,

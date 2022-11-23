@@ -14,7 +14,7 @@ export default function FunctionButtons({ clearAllAndClose, submitTask }) {
       <button
         type="button"
         onClick={submitTask}
-        className="btn btn-primary px-6 text-orange-50 normal-case"
+        className="btn btn-primary bg-custom-500 hover:bg-custom-600 px-6 text-custom-50 normal-case"
       >
         Add Task
       </button>

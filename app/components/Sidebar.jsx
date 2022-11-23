@@ -1,3 +1,4 @@
+/* eslint-disable object-curly-newline */
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -24,13 +25,20 @@ export default function Sidebar() {
 
   return (
     <aside className="h-[calc(100%-1rem)] p-2 pr-4 w-[24%] border-r border-gray-200 flex flex-col">
-      <h1 className="font-semibold text-2xl">
+      <h1 className="font-semibold text-2xl pl-4">
         .to
-        <span className="text-orange-500">do</span>
+        <span className="text-custom-500">do</span>
       </h1>
       <ul className="mt-16 text-gray-400 flex flex-col flex-1 relative isolate">
         <div
-          className="w-full h-[3.2rem] rounded-lg transition-all bg-orange-100/80 absolute left-0 -translate-y-[0.8rem] z-[-1]"
+          className={`w-full h-[3.2rem] rounded-lg transition-all ${
+            ROUTES.some(
+              (route) =>
+                currentRoute?.split('/')[1] === route.path.split('/')[1],
+            )
+              ? 'bg-custom-50'
+              : 'bg-transparent'
+          } absolute left-0 -translate-y-[0.8rem] z-[-1]`}
           style={{
             top: `${
               Math.max(
@@ -46,9 +54,9 @@ export default function Sidebar() {
         {ROUTES.map(({ name, icon, path, hasCollapse }) => (
           <li
             key={name}
-            className={`h-[3.2rem] px-4 rounded-lg transition-all hover:text-orange-500 ${
+            className={`h-[3.2rem] px-4 rounded-lg transition-all hover:text-custom-500 ${
               currentRoute?.split('/')[1] === path.split('/')[1] &&
-              'text-orange-500'
+              'text-custom-500'
             }`}
           >
             <Link href={path}>
@@ -65,8 +73,12 @@ export default function Sidebar() {
           </li>
         ))}
       </ul>
-      <ul className="mt-16 text-gray-400 flex flex-col">
-        <li className="py-3 px-4 rounded-lg">
+      <ul className="mt-16 text-gray-400 flex flex-col relative">
+        <li
+          className={`py-4 px-4 rounded-lg transition-all hover:text-custom-500 ${
+            currentRoute === '/settings' && 'text-custom-500 bg-custom-50'
+          }`}
+        >
           <Link href="/settings">
             <span className="flex items-center gap-5 font-medium">
               <span className="text-xl -mt-[2px] mgc_settings_1_fill" />

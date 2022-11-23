@@ -17,7 +17,7 @@ export default function Navbar({ setIsCreateModalOpen }) {
           <div className="dropdown dropdown-end">
             <label
               tabIndex={0}
-              className="btn border-none normal-case pr-4 px-3 cursor-pointer hover:bg-orange-600 transition-all active:animate-ping text-orange-100 font-semibold gap-1 h-10 min-h-[2.5rem] bg-orange-500 flex items-center justify-center rounded-lg"
+              className="btn border-none normal-case pr-4 px-3 cursor-pointer hover:bg-custom-600 transition-all active:animate-ping text-custom-100 font-semibold gap-1 h-10 min-h-[2.5rem] bg-custom-500 flex items-center justify-center rounded-lg"
             >
               <Plus className="w-4 h-4 mr-1 stroke-3" />
               Add

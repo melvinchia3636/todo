@@ -118,7 +118,7 @@ function CreateModal({ isOpen, setIsOpen, success }) {
           isOpen ? 'translate-x-0' : 'translate-x-[500%]'
         }`}
       >
-        <h1 className="text-orange-500 flex items-center gap-2 text-xl font-medium">
+        <h1 className="text-custom-500 flex items-center gap-2 text-xl font-medium">
           <span className="text-3xl -mt-[2px] mgc_coupon_fill" />
           New Task
         </h1>
@@ -143,7 +143,7 @@ function CreateModal({ isOpen, setIsOpen, success }) {
               targetCollection={targetCollection}
             />
           </div>
-          <span className="text-orange-500 mt-1 ml-4 text-xs">
+          <span className="text-custom-500 mt-1 ml-4 text-xs">
             {collectionError}
           </span>
         </div>

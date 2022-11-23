@@ -28,7 +28,7 @@ export default function CollectionChooserPrompt(props) {
           props.isCollectionChooserOpen ? 'translate-x-0' : 'translate-x-[500%]'
         }`}
       >
-        <h1 className="text-orange-500 flex items-center gap-2 text-xl font-medium">
+        <h1 className="text-custom-500 flex items-center gap-2 text-xl font-medium">
           <CheckboxList className="w-8 h-8" />
           Pick a collection
         </h1>
@@ -46,7 +46,7 @@ export default function CollectionChooserPrompt(props) {
                 }}
                 className={`flex flex-shrink-0 items-center gap-2 p-3 rounded-lg transition-all ${
                   props.targetCollection?.id === collection.id
-                    ? 'bg-orange-500 text-white hover:bg-orange-600'
+                    ? 'bg-custom-500 text-white hover:bg-custom-600'
                     : 'bg-gray-50 text-gray-400 hover:bg-gray-100'
                 }`}
               >

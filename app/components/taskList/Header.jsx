@@ -16,12 +16,12 @@ export default function Header({ collection }) {
           </span>
         </Link>
         <ChevronRight className="w-4 h-4 text-gray-400 stroke-2" />
-        <h1 className="text-lg font-medium text-orange-500">
+        <h1 className="text-lg font-medium text-custom-500">
           {collection.name}
         </h1>
       </div>
       <div className="flex items-center gap-4 my-6">
-        <div className="bg-orange-100 inline-block p-3 rounded-xl">
+        <div className="bg-custom-100 inline-block p-3 rounded-xl">
           {React.createElement(
             icons[
               collection.icon
@@ -31,7 +31,7 @@ export default function Header({ collection }) {
                 .replace(/ /g, '')
             ],
             {
-              className: 'w-5 h-5 text-orange-500',
+              className: 'w-5 h-5 text-custom-500',
             },
           )}
         </div>

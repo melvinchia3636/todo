@@ -14,7 +14,7 @@ export default function TaskTitleInput({ title, setTitle, titleError }) {
         <span className="bar" />
         <label>Task title</label>
       </div>
-      <span className="text-orange-500 mt-1 ml-4 text-xs">{titleError}</span>
+      <span className="text-custom-500 mt-1 ml-4 text-xs">{titleError}</span>
     </div>
   );
 }

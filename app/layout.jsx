@@ -3,16 +3,14 @@
 import 'react-toastify/dist/ReactToastify.css';
 import '../public/assets/fonts/MingCute.css';
 import '../public/styles/globals.scss';
+import '../public/styles/themes.scss';
 
-import React, { useState } from 'react';
-import { toast, ToastContainer } from 'react-toastify';
-import Sidebar from './components/Sidebar';
-import Navbar from './components/Navbar';
-import CreateTask from './components/create/task';
+import React from 'react';
+import { toast } from 'react-toastify';
+import ThemeContextWrapper from './themeContext';
+import Main from './main';
 
 export default function RootLayout({ children }) {
-  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
-
   const successAddTask = () => {
     toast.success('Task added successfully!', {
       position: 'bottom-right',
@@ -35,22 +33,9 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
       </head>
-      <body className="w-full h-screen flex p-4 pb-0 text-sm text-gray-600">
-        <Sidebar />
-        <main className="pb-0 pt-2 px-6 pr-2 flex-1 flex flex-col">
-          <Navbar
-            isCreateModalOpen={isCreateModalOpen}
-            setIsCreateModalOpen={setIsCreateModalOpen}
-          />
-          {children}
-        </main>
-        <CreateTask
-          isOpen={isCreateModalOpen}
-          setIsOpen={setIsCreateModalOpen}
-          success={successAddTask}
-        />
-        <ToastContainer />
-      </body>
+      <ThemeContextWrapper>
+        <Main childrens={children} successAddTask={successAddTask} />
+      </ThemeContextWrapper>
     </html>
   );
 }

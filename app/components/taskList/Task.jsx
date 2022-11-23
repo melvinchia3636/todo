@@ -23,12 +23,12 @@ export default function Task({ task }) {
       <button
         type="button"
         onClick={updateIsDone}
-        className={`w-5 h-5 rounded-md border-2 border-orange-500 ${
-          task.is_done && 'bg-orange-500'
+        className={`w-5 h-5 rounded-md border-2 border-custom-500 ${
+          task.is_done && 'bg-custom-500'
         }`}
       >
         {task.is_done && (
-          <span className="mgc_check_fill text-orange-50 text-xs block" />
+          <span className="mgc_check_fill text-custom-50 text-xs block" />
         )}
       </button>
       <div>
@@ -39,7 +39,7 @@ export default function Task({ task }) {
         >
           {task.title}
         </p>
-        <p className="text-orange-500 text-xs">
+        <p className="text-custom-500 text-xs">
           {task.due_date && moment(task.due_date).fromNow()}
         </p>
       </div>

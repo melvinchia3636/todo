@@ -40,7 +40,7 @@ export default function AddTaskButton({ collectionId }) {
       }}
       className="w-full h-16 rounded-xl flex items-center p-2 pl-4 gap-4 border-2 border-dashed"
     >
-      <div className="w-5 h-5 rounded-md border-4 border-orange-500 bg-orange-500 flex items-center justify-center">
+      <div className="w-5 h-5 rounded-md border-4 border-custom-500 bg-custom-500 flex items-center justify-center">
         <Plus className="w-4 h-4 text-white stroke-3" />
       </div>
       <input
@@ -63,11 +63,11 @@ export default function AddTaskButton({ collectionId }) {
       <button
         type="button"
         onClick={submitTask}
-        className={`h-full aspect-square bg-orange-500 hover:bg-orange-600 rounded-xl transition-all ${
+        className={`h-full aspect-square bg-custom-500 hover:bg-custom-600 rounded-xl transition-all ${
           isActive ? 'max-w-[3rem]' : 'max-w-0'
         }`}
       >
-        <span className="mgc_arrow_right_fill text-lg text-orange-50" />
+        <span className="mgc_arrow_right_fill text-lg text-custom-50" />
       </button>
     </div>
   );

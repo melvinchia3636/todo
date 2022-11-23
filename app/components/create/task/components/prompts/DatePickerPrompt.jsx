@@ -117,7 +117,7 @@ export default function DatePickerPrompt({ isOpen, setOpen, setDueDate }) {
           <table className="h-80">
             <thead>
               <tr>
-                <th className="font-black text-orange-500">S</th>
+                <th className="font-black text-custom-500">S</th>
                 <th>M</th>
                 <th>T</th>
                 <th>W</th>
@@ -145,12 +145,12 @@ export default function DatePickerPrompt({ isOpen, setOpen, setDueDate }) {
                         )
                       }
                       className={`text-center rounded-lg ${
-                        day && 'cursor-pointer hover:bg-orange-100'
+                        day && 'cursor-pointer hover:bg-custom-100'
                       } transition-all ${!j && 'font-bold'} ${
                         selectedDate.year() === year &&
                         selectedDate.month() === month &&
                         selectedDate.date() === day &&
-                        'bg-orange-500 text-orange-50 font-medium hover:bg-orange-500'
+                        'bg-custom-500 text-custom-50 font-medium hover:bg-custom-500'
                       }`}
                       key={j}
                     >
@@ -168,7 +168,7 @@ export default function DatePickerPrompt({ isOpen, setOpen, setDueDate }) {
             setOpen(false);
           }}
           type="button"
-          className="btn w-full btn-primary px-6 text-orange-50 normal-case mt-4"
+          className="btn w-full btn-primary bg-custom-500 hover:bg-custom-600 px-6 text-custom-50 normal-case mt-4"
         >
           Select Date
         </button>

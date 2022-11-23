@@ -6,7 +6,7 @@ export default function CollectionGridItem({ data }) {
   return (
     <Link href={`/collections/${data.id}`} key={data.id}>
       <div className="bg-gray-50 rounded-xl p-5  h-40">
-        <div className="bg-orange-100 inline-block p-3 rounded-xl mb-6">
+        <div className="bg-custom-100 inline-block p-3 rounded-xl mb-6">
           {React.createElement(
             icons[
               data.icon.replace(/(?:-|^)([a-z0-9])/g, (g) =>
@@ -14,7 +14,7 @@ export default function CollectionGridItem({ data }) {
               )
             ],
             {
-              className: 'w-5 h-5 text-orange-500',
+              className: 'w-5 h-5 text-custom-500',
             },
           )}
         </div>
@@ -28,7 +28,7 @@ export default function CollectionGridItem({ data }) {
           </div>
           <div className="relative w-6 h-6">
             <div
-              className="radial-progress absolute top-0 left-0 text-orange-100"
+              className="radial-progress absolute top-0 left-0 text-custom-100"
               style={{
                 '--value': 100,
                 '--size': '1.5rem',
@@ -37,7 +37,7 @@ export default function CollectionGridItem({ data }) {
             />
             {data.finishedTask > 0 && (
               <div
-                className="radial-progress absolute top-0 left-0 text-orange-500"
+                className="radial-progress absolute top-0 left-0 text-custom-500"
                 style={{
                   '--value': (data.finishedTask / data.totalTask) * 100,
                   '--size': '1.5rem',

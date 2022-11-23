@@ -32,7 +32,7 @@ async function Home() {
   return (
     <section className="w-full px-16 py-8 overflow-scroll">
       <div className="w-full flex items-center justify-between mt-8 mb-4">
-        <h1 className="text-lg font-medium text-orange-500">Dashboard</h1>
+        <h1 className="text-lg font-medium text-custom-500">Dashboard</h1>
       </div>
       <p className="text-2xl block mt-6 leading-normal">
         Good Morning,
@@ -42,7 +42,7 @@ async function Home() {
       <div className="flex mt-8 gap-4">
         <button
           type="button"
-          className="px-4 py-2 rounded-lg bg-orange-100/80 text-orange-500 font-medium"
+          className="px-4 py-2 rounded-lg bg-custom-50 text-custom-500 font-medium"
         >
           Unfinished Tasks
         </button>
