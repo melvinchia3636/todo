@@ -3,13 +3,13 @@ import { Plus } from '../../public/assets/icons';
 
 export default function Navbar({ setIsCreateModalOpen }) {
   return (
-    <nav className="w-full flex items-center justify-between border-b border-gray-200 pb-6">
-      <div className="flex items-center gap-2 w-96 p-3 bg-gray-50 rounded-full">
-        <span className="text-xl -mt-[2px] mgc_search_line text-gray-400" />
+    <nav className="w-full flex items-center justify-between border-b-[1.5px] border-base-100 pb-6">
+      <div className="flex items-center gap-2 w-96 py-3 px-4 bg-base-100 rounded-full">
+        <span className="text-xl -mt-[2px] mgc_search_line text-secondary-content" />
         <input
           type="text"
           placeholder="Search anything..."
-          className="bg-transparent placeholder-gray-400"
+          className="bg-transparent placeholder-secondary-content"
         />
       </div>
       <div className="flex items-center gap-3">
@@ -17,7 +17,7 @@ export default function Navbar({ setIsCreateModalOpen }) {
           <div className="dropdown dropdown-end">
             <label
               tabIndex={0}
-              className="btn border-none normal-case pr-4 px-3 cursor-pointer hover:bg-custom-600 transition-all active:animate-ping text-custom-100 font-semibold gap-1 h-10 min-h-[2.5rem] bg-custom-500 flex items-center justify-center rounded-lg"
+              className="btn border-none normal-case pr-4 px-3 cursor-pointer hover:bg-custom-600 transition-all active:animate-ping text-custom-50 font-semibold gap-1 h-10 min-h-[2.5rem] bg-custom-500 flex items-center justify-center rounded-lg"
             >
               <Plus className="w-4 h-4 mr-1 stroke-3" />
               Add

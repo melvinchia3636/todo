@@ -30,26 +30,26 @@ async function page({ params }) {
       <Header collection={collection} />
       <div className="flex flex-col w-full gap-4 mt-10">
         <AddTaskButton collectionId={collection.id} />
-        <header className="flex items-center justify-between w-full">
-          <h3 className="font-medium text-gray-400">
+        <header className="flex items-center justify-between w-full text-secondary-content">
+          <h3 className="font-medium">
             Pending Tasks - {tasks?.filter((task) => !task.is_done).length}
           </h3>
           <button
             type="button"
-            className="px-4 py-2 rounded-lg text-gray-400 font-medium gap-2 flex items-center"
+            className="px-4 py-2 rounded-lg font-medium gap-2 flex items-center"
           >
             <icons.Sort className="w-4 h-4" />
             Sort
           </button>
         </header>
         <TaskItemList tasks={tasks.filter((task) => !task.is_done)} />
-        <header className="flex items-center justify-between w-full">
-          <h3 className="font-medium text-gray-400">
+        <header className="flex items-center justify-between w-full text-secondary-content">
+          <h3 className="font-medium">
             Completed Tasks - {tasks?.filter((task) => task.is_done).length}
           </h3>
           <button
             type="button"
-            className="px-4 py-2 rounded-lg text-gray-400 font-medium gap-2 flex items-center"
+            className="px-4 py-2 rounded-lg font-medium gap-2 flex items-center"
           >
             <icons.Sort className="w-4 h-4" />
             Sort

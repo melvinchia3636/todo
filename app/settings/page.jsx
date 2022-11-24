@@ -34,7 +34,8 @@ const COLORS = [
 ];
 
 function Settings() {
-  const { themeColor, setThemeColor } = React.useContext(ThemeContext);
+  const { themeColor, setThemeColor, theme, setTheme } =
+    React.useContext(ThemeContext);
 
   useEffect(() => {
     localStorage.setItem('themeColor', themeColor);
@@ -49,36 +50,41 @@ function Settings() {
         <h3 className="text-xl block mt-6 leading-normal font-medium">Theme</h3>
         <p className="text-gray-400">Select or customize your UI theme.</p>
         <div className="w-full flex gap-4 mt-6">
-          <div className="flex-1">
-            <div className="border border-gray-300 rounded-xl overflow-hidden">
-              <Auto />
-            </div>
-            <p className="mt-2">Auto</p>
-          </div>
-          <div className="flex-1">
-            <div className="border-2 border-custom-500 rounded-xl overflow-hidden relative">
-              <span className="mgc_check_circle_fill text-custom-500 text-xl block absolute bottom-2 right-2.5" />
-              <Light />
-            </div>
-            <p className="mt-2 text-custom-500 font-medium flex items-center gap-1">
-              Light
-            </p>
-          </div>
-          <div className="flex-1">
-            <div className="border border-gray-300 rounded-xl overflow-hidden">
-              <Dark />
-            </div>
-            <p className="mt-2">Dark</p>
-          </div>
-          <div className="flex-1">
-            <div className="border border-gray-300 rounded-xl overflow-hidden">
-              <Black />
-            </div>
-            <p className="mt-2">Black</p>
-          </div>
+          {[
+            { name: 'Auto', Image: Auto },
+            { name: 'Light', Image: Light },
+            { name: 'Dark', Image: Dark },
+            { name: 'Black', Image: Black },
+          ].map(({ name, Image }) => (
+            <button
+              type="button"
+              onClick={() => setTheme(name.toLowerCase())}
+              className="flex-1"
+            >
+              <div
+                className={`${
+                  theme === name.toLowerCase()
+                    ? 'border-2 border-custom-500'
+                    : 'border-[1.5px] border-base-100'
+                } rounded-2xl overflow-hidden relative`}
+              >
+                {theme === name.toLowerCase() && (
+                  <span className="mgc_check_circle_fill text-custom-500 text-xl block absolute bottom-2 right-2.5" />
+                )}
+                <Image />
+              </div>
+              <p
+                className={`mt-2 ${
+                  theme === name.toLowerCase() && 'text-custom-500 font-medium'
+                }`}
+              >
+                {name}
+              </p>
+            </button>
+          ))}
         </div>
       </div>
-      <div className="w-full border-b border-gray-200 my-6" />
+      <div className="w-full border-b-[1.5px] border-base-100 my-6" />
       <div className="mt-4 mb-12 w-full flex items-center justify-between">
         <div>
           <h3 className="text-xl block leading-normal font-medium">
@@ -90,7 +96,7 @@ function Settings() {
         </div>
         <Listbox value={themeColor} onChange={(color) => setThemeColor(color)}>
           <div className="relative mt-1 w-48">
-            <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-4 pl-4 pr-10 text-left border border-gray-200 focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-custom-300 sm:text-sm flex items-center gap-2">
+            <Listbox.Button className="relative w-full cursor-default rounded-lg bg-background py-4 pl-4 pr-10 text-left border-[1.5px] border-base-100 focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-custom-300 sm:text-sm flex items-center gap-2">
               <span className="bg-custom-500 w-4 h-4 rounded-full inline-block" />
               <span className="block truncate -mt-[1px]">
                 {themeColor.split('-').slice(1).join(' ')}
@@ -111,13 +117,13 @@ function Settings() {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Listbox.Options className="absolute mt-1 max-h-32 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+              <Listbox.Options className="absolute mt-1 max-h-32 w-full overflow-auto rounded-md bg-base-100 py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                 {COLORS.map((color, i) => (
                   <Listbox.Option
                     key={i}
                     className={({ active }) =>
-                      `relative cursor-default select-none group hover:bg-custom-50 border-none transition-all py-3 px-4 flex items-center justify-between ${
-                        active ? 'bg-custom-50' : ''
+                      `relative cursor-default select-none group hover:bg-custom-50 rounded-md border-none transition-all py-3 px-4 flex items-center justify-between ${
+                        active ? 'bg-custom-50' : '!bg-transparent'
                       }`
                     }
                     value={`theme-${color}`}

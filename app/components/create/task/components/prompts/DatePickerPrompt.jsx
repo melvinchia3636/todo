@@ -168,7 +168,7 @@ export default function DatePickerPrompt({ isOpen, setOpen, setDueDate }) {
             setOpen(false);
           }}
           type="button"
-          className="btn w-full btn-primary bg-custom-500 hover:bg-custom-600 px-6 text-custom-50 normal-case mt-4"
+          className="btn w-full btn-custom-500 bg-custom-500 hover:bg-custom-600 px-6 text-custom-50 normal-case mt-4"
         >
           Select Date
         </button>

@@ -8,14 +8,14 @@ export default function TaskItemList({ tasks }) {
         tasks?.reverse().map((task) => (
           <div
             key={task.id}
-            className="p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors"
+            className="p-4 bg-base-100 rounded-xl hover:bg-base-200 transition-colors"
           >
             <Task task={task} />
           </div>
         ))
       ) : (
         <p>
-          <div className="w-full flex items-center justify-center text-gray-400 text-base">
+          <div className="w-full flex items-center justify-center text-secondary-content text-base">
             Nothing here ;-;
           </div>
         </p>

@@ -27,26 +27,26 @@ function Auto() {
       <rect x="23" y="162" width="22" height="22" rx="6" fill="#E5E7EB" />
       <g clipPath="url(#clip0_1_67)">
         <rect
-          width="118"
+          width="119"
           height="256"
-          transform="translate(120)"
-          fill="#111827"
+          transform="translate(119)"
+          fill="#171717"
         />
-        <rect x="14" y="14" width="211" height="32" rx="7" fill="#1F2937" />
-        <rect x="124" y="55" width="101" height="88" rx="7" fill="#1F2937" />
-        <rect x="134" y="126" width="57" height="8" rx="4" fill="#374151" />
-        <rect x="124" y="152" width="101" height="88" rx="7" fill="#1F2937" />
-        <rect x="134" y="223" width="57" height="8" rx="4" fill="#374151" />
-        <rect x="134" y="65" width="22" height="22" rx="6" fill="#374151" />
-        <rect x="134" y="162" width="22" height="22" rx="6" fill="#374151" />
+        <rect x="14" y="14" width="211" height="32" rx="7" fill="#262626" />
+        <rect x="124" y="55" width="101" height="88" rx="7" fill="#262626" />
+        <rect x="134" y="126" width="57" height="8" rx="4" fill="#404040" />
+        <rect x="124" y="152" width="101" height="88" rx="7" fill="#262626" />
+        <rect x="134" y="223" width="57" height="8" rx="4" fill="#404040" />
+        <rect x="134" y="65" width="22" height="22" rx="6" fill="#404040" />
+        <rect x="134" y="162" width="22" height="22" rx="6" fill="#404040" />
       </g>
       <defs>
         <clipPath id="clip0_1_67">
           <rect
-            width="118"
+            width="119"
             height="256"
             fill="white"
-            transform="translate(120)"
+            transform="translate(119)"
           />
         </clipPath>
       </defs>

@@ -38,16 +38,16 @@ export default function AddTaskButton({ collectionId }) {
           taskTitleInput?.current.focus();
         }, 100);
       }}
-      className="w-full h-16 rounded-xl flex items-center p-2 pl-4 gap-4 border-2 border-dashed"
+      className="w-full h-16 rounded-xl flex items-center p-2 pl-4 gap-4 border-2 border-dashed border-base-200"
     >
       <div className="w-5 h-5 rounded-md border-4 border-custom-500 bg-custom-500 flex items-center justify-center">
-        <Plus className="w-4 h-4 text-white stroke-3" />
+        <Plus className="w-4 h-4 text-custom-50 stroke-3" />
       </div>
       <input
         ref={taskTitleInput}
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        className="text-base placeholder-gray-600 focus:placeholder-gray-400 placeholder:transition-colors py-2 flex-1"
+        className="text-base bg-transparent placeholder-base-200 focus:placeholder-secondary-content placeholder:transition-colors py-2 flex-1"
         placeholder="Add a task"
         onBlur={() => {
           setTimeout(() => {
@@ -63,7 +63,7 @@ export default function AddTaskButton({ collectionId }) {
       <button
         type="button"
         onClick={submitTask}
-        className={`h-full aspect-square bg-custom-500 hover:bg-custom-600 rounded-xl transition-all ${
+        className={`h-full aspect-square bg-custom-500 hover:bg-custom-600 rounded-xl transition-all overflow-hidden ${
           isActive ? 'max-w-[3rem]' : 'max-w-0'
         }`}
       >

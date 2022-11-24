@@ -27,7 +27,22 @@ module.exports = {
   daisyui: {
     themes: [
       {
-        main: {},
+        light: {
+          background: colors.white,
+          'base-100': colors.zinc[50],
+          'base-200': colors.zinc[100],
+          'base-300': colors.zinc[200],
+          'primary-content': colors.zinc[600],
+          'secondary-content': colors.zinc[400],
+        },
+        dark: {
+          background: colors.zinc[900],
+          'base-100': colors.zinc[800],
+          'base-200': colors.zinc[700],
+          'base-300': colors.zinc[600],
+          'primary-content': colors.zinc[100],
+          'secondary-content': colors.zinc[500],
+        },
       },
     ],
   },

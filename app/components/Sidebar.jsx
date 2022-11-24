@@ -1,7 +1,9 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable object-curly-newline */
-import React from 'react';
+import React, { useContext } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { ThemeContext } from '../themeContext';
 
 const ROUTES = [
   { name: 'Home', icon: 'home_4_fill', path: '/' },
@@ -22,9 +24,10 @@ const ROUTES = [
 
 export default function Sidebar() {
   const currentRoute = usePathname();
+  const { theme } = useContext(ThemeContext);
 
   return (
-    <aside className="h-[calc(100%-1rem)] p-2 pr-4 w-[24%] border-r border-gray-200 flex flex-col">
+    <aside className="h-[calc(100%-1rem)] p-2 pr-4 w-[24%] border-r-[1.5px] border-base-100 flex flex-col">
       <h1 className="font-semibold text-2xl pl-4">
         .to
         <span className="text-custom-500">do</span>
@@ -36,7 +39,9 @@ export default function Sidebar() {
               (route) =>
                 currentRoute?.split('/')[1] === route.path.split('/')[1],
             )
-              ? 'bg-custom-50'
+              ? theme === 'light'
+                ? 'bg-custom-50'
+                : 'bg-custom-500 opacity-10'
               : 'bg-transparent'
           } absolute left-0 -translate-y-[0.8rem] z-[-1]`}
           style={{
@@ -75,10 +80,16 @@ export default function Sidebar() {
       </ul>
       <ul className="mt-16 text-gray-400 flex flex-col relative">
         <li
-          className={`py-4 px-4 rounded-lg transition-all hover:text-custom-500 ${
-            currentRoute === '/settings' && 'text-custom-500 bg-custom-50'
+          className={`py-4 px-4 relative rounded-lg transition-all overflow-hidden hover:text-custom-500 isolate ${
+            currentRoute === '/settings' && 'text-custom-500'
           }`}
         >
+          <div
+            className={`absolute w-full h-full top-0 left-0 z-[-1] transition-all ${
+              currentRoute === '/settings' &&
+              (theme === 'light' ? 'bg-custom-50' : 'bg-custom-500 opacity-10')
+            }`}
+          />
           <Link href="/settings">
             <span className="flex items-center gap-5 font-medium">
               <span className="text-xl -mt-[2px] mgc_settings_1_fill" />

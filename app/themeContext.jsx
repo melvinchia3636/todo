@@ -11,11 +11,18 @@ export default function themeContext({ children }) {
   const storedColour = localStorage.getItem('themeColor')
     ? localStorage.getItem('themeColor')
     : 'theme-blue';
+  const storedTheme = localStorage.getItem('theme')
+    ? localStorage.getItem('theme')
+    : 'auto';
+
   const [themeColor, setThemeColor] = useState(storedColour);
+  const [theme, setTheme] = useState(storedTheme);
 
   const defaultContext = {
     themeColor,
     setThemeColor,
+    theme,
+    setTheme,
   };
 
   return (

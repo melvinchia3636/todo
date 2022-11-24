@@ -6,6 +6,7 @@
 import React from 'react';
 import PocketBase from 'pocketbase';
 import CollectionListItem from './components/home/CollectionListItem';
+import HomePageButton from './components/home/HomePageButton';
 
 export const fetchCache = 'force-no-store';
 export const dynamic = 'force-dynamic';
@@ -39,20 +40,7 @@ async function Home() {
         <br />
         <span className="font-semibold text-3xl">John Davidson</span>
       </p>
-      <div className="flex mt-8 gap-4">
-        <button
-          type="button"
-          className="px-4 py-2 rounded-lg bg-custom-50 text-custom-500 font-medium"
-        >
-          Unfinished Tasks
-        </button>
-        <button
-          type="button"
-          className="px-4 py-2 rounded-lg border border-gray-200 text-gray-400"
-        >
-          Projects Overview
-        </button>
-      </div>
+      <HomePageButton />
 
       {collections.some((collection) => collection.tasks.length > 0) ? (
         collections.map(
