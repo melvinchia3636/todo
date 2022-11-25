@@ -27,7 +27,11 @@ export default function Collection({ collection }) {
             },
           )}
         </div>
-        <p className="text-primary-content text-lg font-medium">
+        <p
+          className={`${
+            theme === 'light' ? 'text-custom-500' : 'text-primary-content'
+          } text-lg font-medium`}
+        >
           {collection.name}
         </p>
       </div>

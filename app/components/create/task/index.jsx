@@ -114,7 +114,7 @@ function CreateModal({ isOpen, setIsOpen, success }) {
         }`}
       />
       <div
-        className={`w-1/2 bg-white rounded-2xl shadow-xl relative transition-all duration-500 p-8 ${
+        className={`w-1/2 bg-base-100 rounded-2xl shadow-xl relative transition-all duration-500 p-8 ${
           isOpen ? 'translate-x-0' : 'translate-x-[500%]'
         }`}
       >
@@ -123,7 +123,7 @@ function CreateModal({ isOpen, setIsOpen, success }) {
           New Task
         </h1>
         <div className="w-full flex flex-col">
-          <div className="w-full mt-8 flex flex-col gap-4">
+          <div className="w-full mt-8 flex flex-col gap-4 form">
             <TaskTitleInput
               titleError={titleError}
               title={title}

@@ -153,15 +153,15 @@
   }
 }
 
-.group {
-  @apply bg-gray-50 rounded-t-md border-b-2 border-gray-200 relative w-full;
+.form .group {
+  @apply bg-base-200 rounded-t-md border-b-2 border-base-300 relative w-full;
 
   & :is(input, textarea) {
-    @apply pb-2 pt-7 px-4 rounded-t-md left-8 text-base block w-[calc(100%-2rem)] relative bg-gray-50 resize-none;
+    @apply pb-2 pt-7 px-4 rounded-t-md left-8 text-base block w-[calc(100%-2rem)] relative bg-base-200 resize-none;
   }
 
   & label {
-    @apply text-gray-400 text-base absolute pointer-events-none left-12 top-[18px] transition-all duration-200 z-40;
+    @apply text-secondary-content text-base absolute pointer-events-none left-12 top-[18px] transition-all duration-200 z-40;
   }
 
   & :is(input, textarea):is(:focus, :valid, :disabled) {

@@ -26,31 +26,38 @@ export default function Navbar({ setIsCreateModalOpen }) {
               tabIndex={0}
               className="dropdown-content menu p-2 shadow-lg bg-base-100 rounded-box w-52"
             >
-              <li>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setIsCreateModalOpen(true);
-                    document.activeElement.blur();
-                  }}
-                  className="flex items-center gap-2"
-                >
-                  <span className="text-xl -mt-[2px] mgc_coupon_fill" />
-                  Task
-                </button>
-              </li>
-              <li>
-                <a href="/" className="flex items-center gap-2">
-                  <span className="text-xl -mt-[2px] mgc_list_check_2_fill" />
-                  Collection
-                </a>
-              </li>
-              <li>
-                <a href="/" className="flex items-center gap-2">
-                  <span className="text-xl -mt-[2px] mgc_folder_fill" />
-                  Project
-                </a>
-              </li>
+              {[
+                {
+                  name: 'Task',
+                  icon: 'coupon_fill',
+                  callback: () => setIsCreateModalOpen(true),
+                },
+                {
+                  name: 'Collection',
+                  icon: 'list_check_2_fill',
+                  callback: () => {},
+                },
+                {
+                  name: 'Project',
+                  icon: 'folder_fill',
+                  callback: () => {},
+                },
+              ].map(({ name, icon, callback }) => (
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      callback();
+                      document.activeElement.blur();
+                    }}
+                    className="flex items-center gap-2 relative isolate group overflow-hidden hover:text-custom-500 transition-all"
+                  >
+                    <div className="absolute w-full h-full top-0 left-0 group-hover:bg-custom-500 opacity-10 transition-colors z-[-1]" />
+                    <span className={`text-xl -mt-[2px] mgc_${icon}`} />
+                    {name}
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
         </div>

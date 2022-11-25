@@ -7,7 +7,7 @@ export default function FunctionButtons({ clearAllAndClose, submitTask }) {
       <button
         type="button"
         onClick={clearAllAndClose}
-        className="btn hover:bg-gray-200 bg-gray-100 px-6 text-gray-400 border-none normal-case"
+        className="btn hover:bg-base-300 bg-base-200 px-6 text-secondary-content border-none normal-case"
       >
         Cancel
       </button>

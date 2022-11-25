@@ -41,6 +41,10 @@ function Settings() {
     localStorage.setItem('themeColor', themeColor);
   }, [themeColor]);
 
+  useEffect(() => {
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
   return (
     <section className="w-full px-16 py-8 overflow-scroll flex-1">
       <p className="text-2xl block mt-6 leading-normal font-semibold">
@@ -96,7 +100,7 @@ function Settings() {
         </div>
         <Listbox value={themeColor} onChange={(color) => setThemeColor(color)}>
           <div className="relative mt-1 w-48">
-            <Listbox.Button className="relative w-full cursor-default rounded-lg bg-background py-4 pl-4 pr-10 text-left border-[1.5px] border-base-100 focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-custom-300 sm:text-sm flex items-center gap-2">
+            <Listbox.Button className="relative w-full rounded-lg bg-background py-4 pl-4 pr-10 text-left border-[1.5px] border-base-100 focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-custom-300 sm:text-sm flex items-center gap-2">
               <span className="bg-custom-500 w-4 h-4 rounded-full inline-block" />
               <span className="block truncate -mt-[1px]">
                 {themeColor.split('-').slice(1).join(' ')}
@@ -122,7 +126,7 @@ function Settings() {
                   <Listbox.Option
                     key={i}
                     className={({ active }) =>
-                      `relative cursor-default select-none group hover:bg-custom-50 rounded-md border-none transition-all py-3 px-4 flex items-center justify-between ${
+                      `relative cursor-pointer select-none group hover:bg-custom-50 rounded-md transition-all py-3 px-4 flex items-center justify-between ${
                         active ? 'bg-custom-50' : '!bg-transparent'
                       }`
                     }

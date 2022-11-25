@@ -29,6 +29,7 @@ module.exports = {
       {
         light: {
           background: colors.white,
+          neutral: colors.white,
           'base-100': colors.zinc[50],
           'base-200': colors.zinc[100],
           'base-300': colors.zinc[200],
@@ -37,6 +38,7 @@ module.exports = {
         },
         dark: {
           background: colors.zinc[900],
+          neutral: colors.zinc[900],
           'base-100': colors.zinc[800],
           'base-200': colors.zinc[700],
           'base-300': colors.zinc[600],

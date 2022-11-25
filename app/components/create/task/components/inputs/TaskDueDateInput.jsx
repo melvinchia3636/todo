@@ -26,7 +26,7 @@ export default function TaskDueDateInput({
         isDatePickerOpen && 'active'
       }`}
     >
-      <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xl mgc_flag_1_fill z-10" />
+      <span className="absolute left-4 top-1/2 -translate-y-1/2 text-secondary-content text-xl mgc_flag_1_fill z-10" />
       <input
         disabled
         type="text"
@@ -47,7 +47,7 @@ export default function TaskDueDateInput({
 
           dateInput.current.focus();
         }}
-        className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400"
+        className="absolute right-4 top-1/2 -translate-y-1/2 text-secondary-content"
       >
         {!dueDate ? (
           <ChevronDown className="w-5 h-5 stroke-1" />
@@ -65,7 +65,7 @@ export default function TaskDueDateInput({
             <Today className="w-5 h-5 mr-2 stroke-1" />
             Today
           </span>
-          <span className="text-gray-400">Tuesday</span>
+          <span className="text-secondary-content">Tuesday</span>
         </button>
         <button
           type="button"
@@ -76,7 +76,7 @@ export default function TaskDueDateInput({
             <Tomorrow className="w-5 h-5 mr-2 stroke-1" />
             Tomorrow
           </span>
-          <span className="text-gray-400">Wednesday</span>
+          <span className="text-secondary-content">Wednesday</span>
         </button>
         <button
           type="button"
@@ -91,7 +91,7 @@ export default function TaskDueDateInput({
             <NextWeek className="w-5 h-5 mr-2 stroke-1" />
             Next week
           </span>
-          <span className="text-gray-400">Monday</span>
+          <span className="text-secondary-content">Monday</span>
         </button>
         <div className="w-full my-2 border-b border-gray-200" />
         <button
@@ -103,7 +103,7 @@ export default function TaskDueDateInput({
             <Calendar className="w-6 -ml-[2px] h-6 mr-[0.4rem] stroke-1" />
             Pick a date
           </span>
-          <span className="text-gray-400">
+          <span className="text-secondary-content">
             <ChevronRight className="w-5 h-5 stroke-1" />
           </span>
         </button>

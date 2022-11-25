@@ -4,7 +4,7 @@ export default function TaskNotesInput({ notes, setNotes }) {
   return (
     <div className="flex w-full">
       <div className="group">
-        <span className="absolute left-4 top-5 text-gray-400 text-xl mgc_pen_fill -mt-[6px] z-10" />
+        <span className="absolute left-4 top-5 text-secondary-content text-xl mgc_pen_fill -mt-[6px] z-10" />
         <textarea
           required
           type="text"

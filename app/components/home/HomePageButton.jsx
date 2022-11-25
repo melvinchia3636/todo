@@ -12,7 +12,7 @@ export default function HomePageButton() {
         type="button"
         className={`px-4 py-2 rounded-lg font-medium ${
           theme === 'light'
-            ? 'bg-custom-50 text-base-500'
+            ? 'bg-custom-50 text-custom-500'
             : 'bg-custom-500 text-custom-50'
         }`}
       >
