@@ -1,16 +1,17 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
 import Task from './Task';
 
-export default function TaskItemList({ tasks }) {
+export default function TaskItemList({ tasks, setEditTask }) {
   return (
     <div className="flex flex-col w-full gap-4">
       {tasks.length > 0 ? (
         tasks?.reverse().map((task) => (
           <div
             key={task.id}
-            className="p-4 bg-base-100 rounded-xl hover:bg-base-200 transition-colors"
+            className="p-4 bg-base-100 rounded-xl hover:bg-base-200 transition-colors relative isolate"
           >
-            <Task task={task} />
+            <Task task={task} setEditTask={setEditTask} />
           </div>
         ))
       ) : (

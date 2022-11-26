@@ -24,7 +24,9 @@ export default function CollectionGridItem({ data }) {
               )
             ],
             {
-              className: 'w-5 h-5 text-custom-50',
+              className: `w-5 h-5 ${
+                theme === 'light' ? 'text-custom-500' : 'text-custom-50'
+              }`,
             },
           )}
         </div>

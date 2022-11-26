@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
+
 'use client';
 
 /* eslint-disable react/prop-types */
@@ -6,7 +8,7 @@ import moment from 'moment';
 import PocketBase from 'pocketbase';
 import { useRouter } from 'next/navigation';
 
-export default function Task({ task }) {
+export default function Task({ task, setEditTask }) {
   const router = useRouter();
 
   async function updateIsDone() {
@@ -21,6 +23,11 @@ export default function Task({ task }) {
   return (
     <div className="flex items-center gap-4">
       <button
+        onClick={() => setEditTask(task)}
+        type="button"
+        className="absolute top-0 right-0 w-full h-full z-[0]"
+      />
+      <button
         type="button"
         onClick={updateIsDone}
         className={`w-5 h-5 rounded-md border-2 border-custom-500 ${
@@ -31,7 +38,7 @@ export default function Task({ task }) {
           <span className="mgc_check_fill text-custom-50 text-xs block" />
         )}
       </button>
-      <div>
+      <div className="relative z-[-1]">
         <p
           className={`text-base ${
             task.is_done && 'line-through decoration-[1.5px]'

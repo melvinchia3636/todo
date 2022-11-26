@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { ChevronDown } from '../../../../../../public/assets/icons';
 import * as icons from '../../../../../../public/assets/icons';

@@ -1,3 +1,5 @@
+'use client';
+
 /* eslint-disable react/jsx-curly-newline */
 /* eslint-disable newline-per-chained-call */
 import moment from 'moment';

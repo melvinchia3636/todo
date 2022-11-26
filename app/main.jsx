@@ -28,10 +28,10 @@ export default function Main({ childrens, successAddTask }) {
   return (
     <body
       data-theme={generatedTheme}
-      className={`${themeColor} w-full h-screen flex p-4 pb-0 text-sm text-custom-500-content`}
+      className={`${themeColor} w-full h-screen flex p-4 pb-0 text-sm text-custom-500-content min-w-0`}
     >
       <Sidebar />
-      <main className="pb-0 pt-2 px-6 pr-2 flex-1 flex flex-col">
+      <main className="pb-0 pt-2 px-6 pr-2 flex-1 flex flex-col min-w-0">
         <Navbar
           isCreateModalOpen={isCreateModalOpen}
           setIsCreateModalOpen={setIsCreateModalOpen}

@@ -208,3 +208,11 @@
     @apply py-3;
   }
 }
+
+.form.side .group {
+  @apply bg-base-100 border-base-200;
+
+  & :is(input, textarea) {
+    @apply bg-base-100;
+  }
+}

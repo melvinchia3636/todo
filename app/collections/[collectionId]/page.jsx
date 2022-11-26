@@ -1,10 +1,8 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import PocketBase from 'pocketbase';
-import * as icons from '../../../public/assets/icons';
-import Header from '../../components/taskList/Header';
-import AddTaskButton from '../../components/taskList/AddTaskButton';
-import TaskItemList from '../../components/taskList/TaskItemList';
+import TaskItemListContainer from '../../components/taskList/TaskItemListContainer';
 
 export const fetchCache = 'force-no-store';
 export const dynamic = 'force-dynamic';
@@ -25,40 +23,8 @@ async function getTasks(collectionId) {
 
 async function page({ params }) {
   const { collection, tasks } = await getTasks(params.collectionId);
-  return (
-    <section className="w-full px-16 py-8 overflow-scroll">
-      <Header collection={collection} />
-      <div className="flex flex-col w-full gap-4 mt-10">
-        <AddTaskButton collectionId={collection.id} />
-        <header className="flex items-center justify-between w-full text-secondary-content">
-          <h3 className="font-medium">
-            Pending Tasks - {tasks?.filter((task) => !task.is_done).length}
-          </h3>
-          <button
-            type="button"
-            className="px-4 py-2 rounded-lg font-medium gap-2 flex items-center"
-          >
-            <icons.Sort className="w-4 h-4" />
-            Sort
-          </button>
-        </header>
-        <TaskItemList tasks={tasks.filter((task) => !task.is_done)} />
-        <header className="flex items-center justify-between w-full text-secondary-content">
-          <h3 className="font-medium">
-            Completed Tasks - {tasks?.filter((task) => task.is_done).length}
-          </h3>
-          <button
-            type="button"
-            className="px-4 py-2 rounded-lg font-medium gap-2 flex items-center"
-          >
-            <icons.Sort className="w-4 h-4" />
-            Sort
-          </button>
-        </header>
-        <TaskItemList tasks={tasks.filter((task) => task.is_done)} />
-      </div>
-    </section>
-  );
+
+  return <TaskItemListContainer collection={collection} tasks={tasks} />;
 }
 
 export default page;

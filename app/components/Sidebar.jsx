@@ -27,7 +27,7 @@ export default function Sidebar() {
   const { theme } = useContext(ThemeContext);
 
   return (
-    <aside className="h-[calc(100%-1rem)] p-2 pr-4 w-[24%] border-r-[1.5px] border-base-100 flex flex-col">
+    <aside className="h-[calc(100%-1rem)] flex-shrink-0 p-2 pr-4 w-[24%] border-r-[1.5px] border-base-100 flex flex-col">
       <h1 className="font-semibold text-2xl pl-4">
         .to
         <span className="text-custom-500">do</span>
