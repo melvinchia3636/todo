@@ -1,7 +1,6 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
-
 'use client';
 
+/* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable react/prop-types */
 import React from 'react';
 import moment from 'moment';
@@ -21,16 +20,20 @@ export default function Task({ task, setEditTask }) {
   }
 
   return (
-    <div className="flex items-center gap-4">
-      <button
-        onClick={() => setEditTask(task)}
-        type="button"
-        className="absolute top-0 right-0 w-full h-full z-[0]"
-      />
+    <div className="flex items-center gap-4 ">
+      {setEditTask && (
+        <button
+          onClick={() => {
+            if (setEditTask) setEditTask(task);
+          }}
+          type="button"
+          className="absolute top-0 right-0 w-full h-full z-[0]"
+        />
+      )}
       <button
         type="button"
         onClick={updateIsDone}
-        className={`w-5 h-5 rounded-md border-2 border-custom-500 ${
+        className={`w-5 h-5 rounded-md border-2 border-custom-500 z-[1] ${
           task.is_done && 'bg-custom-500'
         }`}
       >
@@ -38,7 +41,7 @@ export default function Task({ task, setEditTask }) {
           <span className="mgc_check_fill text-custom-50 text-xs block" />
         )}
       </button>
-      <div className="relative z-[-1]">
+      <div className={`relative ${setEditTask && 'z-[-1]'} w-full`}>
         <p
           className={`text-base ${
             task.is_done && 'line-through decoration-[1.5px]'
