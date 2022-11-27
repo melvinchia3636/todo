@@ -32,7 +32,7 @@ export default function TaskEdit({ task, setEditTask, collection }) {
             />
           </div>
           <div className="flex flex-col gap-4 mt-8">
-            <TaskNotesInput />
+            <TaskNotesInput notes={task.notes} />
             <TaskDueDateInput dueDate={task.due_date} />
             <TaskCollectionInput targetCollection={collection} />
           </div>

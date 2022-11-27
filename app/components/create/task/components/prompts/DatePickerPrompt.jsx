@@ -78,7 +78,7 @@ export default function DatePickerPrompt({ isOpen, setOpen, setDueDate }) {
         }`}
       />
       <div
-        className={`bg-white rounded-2xl shadow-xl relative transition-all duration-500 p-8 pb-4 ${
+        className={`bg-base-100 rounded-2xl shadow-xl relative transition-all duration-500 p-8 pb-4 ${
           isOpen ? 'translate-x-0' : 'translate-x-[500%]'
         }`}
       >
@@ -175,7 +175,7 @@ export default function DatePickerPrompt({ isOpen, setOpen, setDueDate }) {
         <button
           onClick={() => setOpen(false)}
           type="button"
-          className="btn w-full hover:bg-gray-100 px-6 text-gray-400 border-none normal-case mt-2"
+          className="btn w-full bg-base-200 hover:bg-base-300 px-6 text-secondary-content border-none normal-case mt-2"
         >
           Cancel
         </button>

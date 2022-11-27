@@ -50,7 +50,7 @@ async function Home() {
             ),
         )
       ) : (
-        <div className="pt-12 w-full flex items-center justify-center text-gray-400 text-xl">
+        <div className="pt-12 w-full flex items-center justify-center text-secondary-content text-xl">
           No unfinished tasks. =)
         </div>
       )}

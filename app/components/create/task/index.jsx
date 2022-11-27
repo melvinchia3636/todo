@@ -143,7 +143,7 @@ function CreateModal({ isOpen, setIsOpen, success }) {
               targetCollection={targetCollection}
             />
           </div>
-          <span className="text-custom-500 mt-1 ml-4 text-xs">
+          <span className="text-red-500 mt-1 ml-4 text-xs">
             {collectionError}
           </span>
         </div>
