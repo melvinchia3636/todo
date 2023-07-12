@@ -1,0 +1,11 @@
+{
+	"/": [
+		"src/routes/+page.ts"
+	],
+	"/collections": [
+		"src/routes/collections/+page.ts"
+	],
+	"/collections/[collectionId]": [
+		"src/routes/collections/[collectionId]/+page.ts"
+	]
+}
