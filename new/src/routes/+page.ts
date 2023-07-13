@@ -18,5 +18,5 @@ async function getCollection() {
 
 export const load = (async () => {
 	const collections = await getCollection();
-	return { collections };
+	return { collections, getCollection };
 }) satisfies PageLoad;

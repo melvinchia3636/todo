@@ -2,11 +2,15 @@
 	import PocketBase from 'pocketbase';
 	import moment from 'moment';
 
+	export let update: () => void;
+
 	async function updateIsDone() {
 		const client = new PocketBase('http://127.0.0.1:8090');
 		await client.collection('tasks').update(task.id, {
 			is_done: !task.is_done
 		});
+
+		update();
 	}
 
 	export let task: { [key: string]: any } = {};

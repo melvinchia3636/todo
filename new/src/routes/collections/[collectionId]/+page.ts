@@ -21,6 +21,7 @@ export const load = (async ({ params }) => {
 	const { collection, tasks } = await getTasks(collectionId);
 	return {
 		collection,
-		tasks
+		tasks,
+		getTasks
 	};
 }) satisfies PageLoad;

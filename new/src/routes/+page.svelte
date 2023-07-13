@@ -6,7 +6,10 @@
 	export let data: PageData;
 
 	$: collections = data.collections;
-	console.log(data);
+
+	async function update() {
+		collections = await data.getCollection();
+	}
 </script>
 
 <section class="w-full px-16 py-8 overflow-scroll">
@@ -23,7 +26,7 @@
 	{#if collections.some((collection) => collection.tasks.length > 0)}
 		{#each collections as collection}
 			{#if collection.tasks.length > 0}
-				<CollectionListItem {collection} />
+				<CollectionListItem {collection} update />
 			{/if}
 		{/each}
 	{:else}

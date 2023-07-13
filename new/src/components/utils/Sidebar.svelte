@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import { theme } from '../../provider/themeProvider';
-	import { navigating } from '$app/stores';
+	import { navigating, page } from '$app/stores';
 
 	const ROUTES = [
 		{ name: 'Home', icon: 'home_4_fill', path: '/' },
@@ -19,17 +19,6 @@
 		},
 		{ name: 'Calendar', icon: 'calendar_fill', path: '/calendar' }
 	];
-
-	let currentRoute = '';
-
-	function updateCurrentRoute() {
-		currentRoute = window.location.pathname;
-	}
-
-	onMount(() => {
-		updateCurrentRoute();
-		navigating.subscribe(updateCurrentRoute);
-	});
 </script>
 
 <aside
@@ -42,7 +31,7 @@
 	<ul class="mt-16 text-gray-400 flex flex-col flex-1 relative isolate">
 		<div
 			class="w-full h-[3.2rem] rounded-lg transition-all {ROUTES.some(
-				(route) => currentRoute?.split('/')[1] === route.path.split('/')[1]
+				(route) => $page.url.pathname.split('/')[1] === route.path.split('/')[1]
 			)
 				? $theme === 'light'
 					? 'bg-custom-50'
@@ -50,16 +39,16 @@
 				: 'bg-transparent'} absolute left-0 -translate-y-[0.8rem] z-[-1]"
 			style="top:{Math.max(
 				0,
-				ROUTES.findIndex((route) => currentRoute?.split('/')[1] === route.path.split('/')[1])
+				ROUTES.findIndex((route) => $page.url.pathname.split('/')[1] === route.path.split('/')[1])
 			) * 3.2}rem"
 		/>
 		{#each ROUTES as { name, icon, path, hasCollapse }}
-			<li
-				class="h-[3.2rem] px-4 rounded-lg transition-all hover:text-custom-500 {currentRoute?.split(
-					'/'
-				)[1] === path.split('/')[1] && 'text-custom-500'}"
-			>
-				<a href={path}>
+			<a href={path}>
+				<li
+					class="h-[3.2rem] px-4 rounded-lg transition-all hover:text-custom-500 {$page.url.pathname.split(
+						'/'
+					)[1] === path.split('/')[1] && 'text-custom-500'}"
+				>
 					<span class="flex items-center justify-between gap-5">
 						<div class="flex items-center gap-5 font-medium">
 							<span class="text-xl -mt-[2px] mgc_{icon}" />
@@ -69,17 +58,17 @@
 							<span class="text-base -mt-[2px] mgc_right_fill" />
 						{/if}
 					</span>
-				</a>
-			</li>
+				</li>
+			</a>
 		{/each}
 	</ul>
 	<ul class="mt-16 text-gray-400 flex flex-col relative">
 		<li
-			class="py-4 px-4 relative rounded-lg transition-all overflow-hidden hover:text-custom-500 isolate ${currentRoute ===
-				'/settings' && 'text-custom-500'}"
+			class="py-4 px-4 relative rounded-lg transition-all overflow-hidden hover:text-custom-500 isolate"
+			class:text-custom-500={$page.url.pathname === '/settings'}
 		>
 			<div
-				class="absolute w-full h-full top-0 left-0 z-[-1] transition-all {currentRoute ===
+				class="absolute w-full h-full top-0 left-0 z-[-1] transition-all {$page.url.pathname ===
 					'/settings' && ($theme === 'light' ? 'bg-custom-50' : 'bg-custom-500 opacity-10')}"
 			/>
 			<a href="/settings">

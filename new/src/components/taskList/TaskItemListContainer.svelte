@@ -2,6 +2,8 @@
 	import Header from './Header.svelte';
 	import TaskItemList from './TaskItemList.svelte';
 
+	export let update: () => void;
+
 	export let collection: { [key: string]: any } = {};
 	export let tasks: { [key: string]: any }[] = [];
 
@@ -25,7 +27,7 @@
 					Sort
 				</button>
 			</header>
-			<TaskItemList tasks={tasks.filter((task) => !task.is_done)} {setEditTask} />
+			<TaskItemList tasks={tasks.filter((task) => !task.is_done)} {setEditTask} {update} />
 			<header class="flex items-center justify-between w-full text-secondary-content">
 				<h3 class="font-medium">
 					Completed Tasks - {tasks?.filter((task) => task.is_done).length}
@@ -35,7 +37,7 @@
 					Sort
 				</button>
 			</header>
-			<TaskItemList tasks={tasks.filter((task) => task.is_done)} {setEditTask} />
+			<TaskItemList tasks={tasks.filter((task) => task.is_done)} {setEditTask} {update} />
 		</div>
 	</section>
 	<!-- <TaskEdit task={editTask} {setEditTask} {collection} /> -->
