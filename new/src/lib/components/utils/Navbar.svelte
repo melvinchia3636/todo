@@ -1,5 +1,6 @@
 <script lang="ts">
-	export let userData: { [key: string]: any } = {};
+import { auth } from "$lib/provider/authProvider";
+
 </script>
 
 <nav class="w-full flex items-center justify-between border-b-[1.5px] border-base-100 pb-6">
@@ -31,7 +32,7 @@
 									callback();
 									// document.activeElement?.blur();
 								}}
-								class="flex items-center gap-2 relative isolate group overflow-hidden hover:text-custom-500 transition-all"
+								class="flex items-center gap-2 relative isolate group overflow-hidden hover:text-custom-500"
 							>
 								<div
 									class="absolute w-full h-full top-0 left-0 group-hover:bg-custom-500 opacity-10 transition-colors z-[-1]"
@@ -44,13 +45,13 @@
 				</ul>
 			</div>
 		</div>
-		<div class="rounded-full overflow-hidden w-9 h-9">
-			<img src="http://127.0.0.1:8090/api/files/{userData.collectionId}/{userData.id}/{userData.avatar}" alt="avatar" class="w-full h-full object-cover" />
-		</div>
-		<div>
-			<div class="font-medium text-base">{userData.name || userData.username}</div>
-			<div class="text-gray-400 text-xs">{userData.email}</div>
-		</div>
-		<span class="text-xl -mt-[2px] mgc_more_2_fill" />
+			<div class="rounded-full overflow-hidden w-9 h-9">
+				<img src="http://127.0.0.1:8090/api/files/{$auth.userData?.collectionId}/{$auth.userData?.id}/{$auth.userData?.avatar}" alt="avatar" class="w-full h-full object-cover" />
+			</div>
+			<div>
+			<div class="font-medium text-base">{$auth.userData?.name || $auth.userData?.username}</div>
+				<div class="text-gray-400 text-xs">{$auth.userData?.email}</div>
+			</div>
+			<span class="text-xl -mt-[2px] mgc_more_2_fill" />
 	</div>
 </nav>

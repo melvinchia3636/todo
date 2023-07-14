@@ -2,6 +2,8 @@
 	import { onMount } from 'svelte';
 	import { theme } from '$lib/provider/themeProvider';
 	import { navigating, page } from '$app/stores';
+	import { goto } from '$app/navigation';
+	import PocketBase from 'pocketbase';
 
 	const ROUTES = [
 		{ name: 'Home', icon: 'home_4_fill', path: '/' },
@@ -19,6 +21,7 @@
 		},
 		{ name: 'Calendar', icon: 'calendar_fill', path: '/calendar' }
 	];
+
 </script>
 
 <aside
@@ -79,12 +82,14 @@
 			</a>
 		</li>
 		<li class="py-3 px-4 rounded-lg">
-			<a href="/logout">
-				<span class="flex items-center gap-5 font-medium">
-					<span class="text-xl -mt-[2px] mgc_exit_door_fill" />
-					Log out
-				</span>
-			</a>
+			<form action="/logout" method="POST">
+				<button type="submit">
+					<span class="flex items-center gap-5 font-medium">
+						<span class="text-xl -mt-[2px] mgc_exit_door_fill" />
+						Log out
+					</span>
+				</button>
+			</form>
 		</li>
 	</ul>
 </aside>

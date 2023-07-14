@@ -1,11 +1,9 @@
 import type { LayoutServerLoad } from './$types';
 
 export const load = (async ({ locals }) => {
-	const { isValid, model } = locals.pb.authStore;
+	const authStore = locals.pb.authStore;
 	return {
-		auth: {
-			isValid,
-			model: model?.$export()
-		}
+		isLoggedIn: authStore.isValid,
+		userData: authStore.model?.$export()
 	};
 }) satisfies LayoutServerLoad;

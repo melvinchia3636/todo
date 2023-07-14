@@ -2,15 +2,15 @@
 	import PocketBase from 'pocketbase';
 	import Cover from '$lib/assets/images/login-cover.jpg';
 
-	async function loginWithGoogle() {
+	async function loginWithProvider(provider: "google" | "github") {
 		const pb = new PocketBase('http://127.0.0.1:8090');
 		const authProviders = (await pb.collection('users').listAuthMethods()).authProviders;
-		const googleAuthProvider = authProviders.filter((e) => e.name === 'google')[0] || null;
+		const targetAuthProvider = authProviders.filter((e) => e.name === provider)[0] || null;
 
-		const redirectURL = `${window.location.origin}/oauth`;
-		const authProviderRedirect = `${googleAuthProvider.authUrl}${redirectURL}`;
-		const { state } = googleAuthProvider;
-		const verifier = googleAuthProvider.codeVerifier;
+		const redirectURL = `${window.location.origin}/oauth/${provider}`;
+		const authProviderRedirect = `${targetAuthProvider.authUrl}${redirectURL}`;
+		const { state } = targetAuthProvider;
+		const verifier = targetAuthProvider.codeVerifier;
 
 		console.log(`state=${encodeURIComponent(state)};`, verifier);
 
@@ -80,7 +80,7 @@
 			<button
 				type="button"
 				class="btn btn-primary h-14 border-primary-content text-primary-content hover:bg-primary-content hover:text-neutral flex items-center gap-2"
-				on:click={loginWithGoogle}
+				on:click={() => loginWithProvider('google')}
 			>
 				<span class="text-lg mgc_google_fill z-50" />
 				Continue with Google
@@ -88,6 +88,7 @@
 			<button
 				type="button"
 				class="btn btn-primary h-14 border-primary-content text-primary-content hover:bg-primary-content hover:text-neutral flex items-center gap-2"
+				on:click={() => loginWithProvider('github')}
 			>
 				<span class="text-lg mgc_github_line z-50" />
 				Continue with Github

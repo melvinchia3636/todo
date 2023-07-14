@@ -2,10 +2,14 @@
 import { redirect } from '@sveltejs/kit';
 //@ts-expect-error
 import cookie from 'cookie-parse';
-import type { RequestHandler } from './$types';
+import type { RequestHandler } from '../$types';
 
 export const GET = (async ({ locals, url, cookies }) => {
-	const redirectURL = `${url.origin}/oauth`;
+	if (locals.pb.authStore.isValid) {
+		throw redirect(303, '/');
+	}
+
+	const redirectURL = `${url.origin}/oauth/google`;
 	const expectedState = cookies.get('state');
 	const expectedVerifier = cookies.get('verifier');
 

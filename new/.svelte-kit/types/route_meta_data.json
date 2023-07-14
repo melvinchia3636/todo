@@ -15,8 +15,14 @@
 	"/login": [
 		"src/routes/+layout.server.ts"
 	],
-	"/oauth": [
-		"src/routes/oauth/+server.ts"
+	"/logout": [
+		"src/routes/logout/+server.ts"
+	],
+	"/oauth/github": [
+		"src/routes/oauth/github/+server.ts"
+	],
+	"/oauth/google": [
+		"src/routes/oauth/google/+server.ts"
 	],
 	"/signup": [
 		"src/routes/+layout.server.ts"
