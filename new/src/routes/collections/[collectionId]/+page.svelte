@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import TaskItemListContainer from '../../../components/taskList/TaskItemListContainer.svelte';
+	import TaskItemListContainer from '$lib/components/taskList/TaskItemListContainer.svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;

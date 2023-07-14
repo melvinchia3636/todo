@@ -1,11 +1,24 @@
 {
 	"/": [
-		"src/routes/+page.ts"
+		"src/routes/+page.ts",
+		"src/routes/+layout.server.ts",
+		"src/routes/+layout.server.ts"
 	],
 	"/collections": [
-		"src/routes/collections/+page.ts"
+		"src/routes/collections/+page.ts",
+		"src/routes/+layout.server.ts"
 	],
 	"/collections/[collectionId]": [
-		"src/routes/collections/[collectionId]/+page.ts"
+		"src/routes/collections/[collectionId]/+page.ts",
+		"src/routes/+layout.server.ts"
+	],
+	"/login": [
+		"src/routes/+layout.server.ts"
+	],
+	"/oauth": [
+		"src/routes/oauth/+server.ts"
+	],
+	"/signup": [
+		"src/routes/+layout.server.ts"
 	]
 }

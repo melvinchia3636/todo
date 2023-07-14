@@ -1,5 +1,5 @@
 <script lang="ts">
-	import CollectionGrid from '../../components/taskList/CollectionGrid.svelte';
+	import CollectionGrid from '$lib/components/taskList/CollectionGrid.svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;

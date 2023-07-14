@@ -1,6 +1,6 @@
 <script lang="ts">
-	import CollectionListItem from '../components/home/CollectionListItem.svelte';
-	import HomePageButton from '../components/home/HomePageButton.svelte';
+	import CollectionListItem from '$lib/components/home/CollectionListItem.svelte';
+	import HomePageButton from '$lib/components/home/HomePageButton.svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
@@ -26,7 +26,7 @@
 	{#if collections.some((collection) => collection.tasks.length > 0)}
 		{#each collections as collection}
 			{#if collection.tasks.length > 0}
-				<CollectionListItem {collection} update />
+				<CollectionListItem {collection} {update} />
 			{/if}
 		{/each}
 	{:else}

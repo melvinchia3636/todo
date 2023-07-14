@@ -1,12 +1,14 @@
-<script>
-	import '../assets/fonts/MingCute.css';
-	import '../assets/styles/globals.scss';
-	import '../assets/styles/themes.scss';
+<script lang="ts">
+	import type { LayoutData } from './$types';
 
-	import { theme, themeColor } from '../provider/themeProvider';
+	import '$lib/assets/fonts/MingCute.css';
+	import '$lib/assets/styles/globals.scss';
+	import '$lib/assets/styles/themes.scss';
+
+	import { theme, themeColor } from '$lib/provider/themeProvider';
 	import { onMount } from 'svelte';
-	import Sidebar from '../components/utils/Sidebar.svelte';
-	import Navbar from '../components/utils/Navbar.svelte';
+	import Sidebar from '$lib/components/utils/Sidebar.svelte';
+	import Navbar from '$lib/components/utils/Navbar.svelte';
 	import { page } from '$app/stores';
 
 	let generatedTheme = 'light';
@@ -35,6 +37,16 @@
 			generatedTheme = $theme;
 		}
 	}
+
+	export let data: LayoutData;
+
+	let userData: {[key: string]: any} = {};
+
+	$: {
+		if (data?.auth && data.auth.isValid) {
+			userData = data.auth.model || {};
+		}
+	}
 </script>
 
 <main
@@ -43,11 +55,11 @@
 		'p-4'} pb-0 text-sm text-custom-500-content min-w-0"
 >
 	{#if $page.url.pathname.split('/').pop() !== 'login'}
-		<Sidebar />
+		<Sidebar {userData} />
 	{/if}
 	<div class="pb-0 pt-2 px-6 pr-2 flex-1 flex flex-col min-w-0">
 		{#if $page.url.pathname.split('/').pop() !== 'login'}
-			<Navbar /> <!--{isCreateModalOpen} {setIsCreateModalOpen} />-->
+			<Navbar {userData} /> <!--{isCreateModalOpen} {setIsCreateModalOpen} />-->
 		{/if}
 		<slot />
 	</div>
