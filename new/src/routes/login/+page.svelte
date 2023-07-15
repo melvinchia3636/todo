@@ -3,7 +3,7 @@
 	import Cover from '$lib/assets/images/login-cover.jpg';
 
 	async function loginWithProvider(provider: "google" | "github") {
-		const pb = new PocketBase('http://127.0.0.1:8090');
+		const pb = new PocketBase(import.meta.env.VITE_POCKETBASE_URL);
 		const authProviders = (await pb.collection('users').listAuthMethods()).authProviders;
 		const targetAuthProvider = authProviders.filter((e) => e.name === provider)[0] || null;
 

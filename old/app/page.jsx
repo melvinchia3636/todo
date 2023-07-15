@@ -4,21 +4,23 @@
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-restricted-syntax */
 
-import React from 'react';
-import PocketBase from 'pocketbase';
-import CollectionListItem from './components/home/CollectionListItem';
-import HomePageButton from './components/home/HomePageButton';
+import React from "react";
+import PocketBase from "pocketbase";
+import CollectionListItem from "./components/home/CollectionListItem";
+import HomePageButton from "./components/home/HomePageButton";
 
-export const fetchCache = 'force-no-store';
-export const dynamic = 'force-dynamic';
+export const fetchCache = "force-no-store";
+export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
 async function getCollection() {
-  const client = new PocketBase('http://127.0.0.1:8090');
-  const collections = (await client.collection('collections').getFullList()).map((e) => e.export());
+  const client = new PocketBase(process.env.REACT_APP_POCKETBASE_URL);
+  const collections = (
+    await client.collection("collections").getFullList()
+  ).map((e) => e.export());
 
   for (const collection of collections) {
-    const tasks = await client.collection('tasks').getList(1, 100, {
+    const tasks = await client.collection("tasks").getList(1, 100, {
       filter: `collection = "${collection.id}" && is_done = false`,
     });
 
@@ -48,7 +50,7 @@ async function Home() {
           (collection) =>
             collection.tasks.length > 0 && (
               <CollectionListItem key={collection.id} collection={collection} />
-            ),
+            )
         )
       ) : (
         <div className="pt-12 w-full flex items-center justify-center text-secondary-content text-xl">

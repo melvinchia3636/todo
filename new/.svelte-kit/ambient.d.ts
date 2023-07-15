@@ -26,6 +26,7 @@
  * ```
  */
 declare module '$env/static/private' {
+	export const VITE_POCKETBASE_URL: string;
 	export const npm_package_dependencies_pocketbase: string;
 	export const MANPATH: string;
 	export const npm_package_devDependencies_prettier: string;
@@ -79,6 +80,7 @@ declare module '$env/static/private' {
 	export const npm_package_devDependencies__typescript_eslint_parser: string;
 	export const PATH: string;
 	export const npm_config_argv: string;
+	export const npm_package_dependencies__rgossiaux_svelte_headlessui: string;
 	export const _: string;
 	export const npm_config_engine_strict: string;
 	export const __CFBundleIdentifier: string;
@@ -161,6 +163,7 @@ declare module '$env/static/public' {
  */
 declare module '$env/dynamic/private' {
 	export const env: {
+		VITE_POCKETBASE_URL: string;
 		npm_package_dependencies_pocketbase: string;
 		MANPATH: string;
 		npm_package_devDependencies_prettier: string;
@@ -214,6 +217,7 @@ declare module '$env/dynamic/private' {
 		npm_package_devDependencies__typescript_eslint_parser: string;
 		PATH: string;
 		npm_config_argv: string;
+		npm_package_dependencies__rgossiaux_svelte_headlessui: string;
 		_: string;
 		npm_config_engine_strict: string;
 		__CFBundleIdentifier: string;

@@ -46,7 +46,7 @@ import { auth } from "$lib/provider/authProvider";
 			</div>
 		</div>
 			<div class="rounded-full overflow-hidden w-9 h-9">
-				<img src="http://127.0.0.1:8090/api/files/{$auth.userData?.collectionId}/{$auth.userData?.id}/{$auth.userData?.avatar}" alt="avatar" class="w-full h-full object-cover" />
+				<img src="{import.meta.env.VITE_POCKETBASE_URL}/api/files/{$auth.userData?.collectionId}/{$auth.userData?.id}/{$auth.userData?.avatar}" alt="avatar" class="w-full h-full object-cover" />
 			</div>
 			<div>
 			<div class="font-medium text-base">{$auth.userData?.name || $auth.userData?.username}</div>

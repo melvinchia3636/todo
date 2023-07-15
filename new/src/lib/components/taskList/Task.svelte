@@ -5,7 +5,7 @@
 	export let update: () => void;
 
 	async function updateIsDone() {
-		const client = new PocketBase('http://127.0.0.1:8090');
+		const client = new PocketBase(import.meta.env.VITE_POCKETBASE_URL);
 		await client.collection('tasks').update(task.id, {
 			is_done: !task.is_done
 		});

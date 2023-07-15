@@ -2,7 +2,7 @@ import PocketBase from 'pocketbase';
 import type { PageLoad } from '../$types';
 
 async function getTasks(collectionId: string) {
-	const client = new PocketBase('http://127.0.0.1:8090');
+	const client = new PocketBase(import.meta.env.VITE_POCKETBASE_URL);
 	const collection = (await client.collection('collections').getOne(collectionId)).export();
 	const tasks = (
 		await client.collection('tasks').getList(1, 50, {

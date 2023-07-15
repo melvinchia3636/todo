@@ -1,32 +1,32 @@
-'use client';
+"use client";
 
-import { useRouter } from 'next/navigation';
-import React, { useRef, useState } from 'react';
-import PocketBase from 'pocketbase';
+import { useRouter } from "next/navigation";
+import React, { useRef, useState } from "react";
+import PocketBase from "pocketbase";
 
-import moment from 'moment';
-import { Plus } from '../../../../new/src/assets/icons';
+import moment from "moment";
+import { Plus } from "../../../../new/src/assets/icons";
 
 export default function AddTaskButton({ collectionId }) {
   const router = useRouter();
 
   const [isActive, setActive] = useState(false);
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState("");
 
   const taskTitleInput = useRef(null);
 
   const submitTask = async () => {
-    const db = new PocketBase('http://127.0.0.1:8090');
+    const db = new PocketBase(import.meta.env.VITE_POCKETBASE_URL);
     const task = {
       title,
       collection: collectionId,
       is_done: false,
       created_at: moment().format(),
     };
-    await db.records.create('tasks', task);
+    await db.records.create("tasks", task);
 
     router.refresh();
-    setTitle('');
+    setTitle("");
     setActive(false);
   };
 
@@ -55,7 +55,7 @@ export default function AddTaskButton({ collectionId }) {
           }, 100);
         }}
         onKeyDown={(e) => {
-          if (e.key === 'Enter') {
+          if (e.key === "Enter") {
             submitTask();
           }
         }}
@@ -64,7 +64,7 @@ export default function AddTaskButton({ collectionId }) {
         type="button"
         onClick={submitTask}
         className={`h-full aspect-square bg-custom-500 hover:bg-custom-600 rounded-xl transition-all overflow-hidden ${
-          isActive ? 'max-w-[3rem]' : 'max-w-0'
+          isActive ? "max-w-[3rem]" : "max-w-0"
         }`}
       >
         <span className="mgc_arrow_right_fill text-lg text-custom-50" />

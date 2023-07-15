@@ -1,28 +1,28 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable react/prop-types */
-import moment from 'moment';
-import React, { useState, useEffect, useRef } from 'react';
-import PocketBase from 'pocketbase';
+import moment from "moment";
+import React, { useState, useEffect, useRef } from "react";
+import PocketBase from "pocketbase";
 
-import { useRouter } from 'next/navigation';
-import FunctionButtons from './components/FunctionButtons';
-import DatePickerPrompt from './components/prompts/DatePickerPrompt';
-import CollectionChooserPrompt from './components/prompts/CollectionChooserPrompt';
-import TaskTitleInput from './components/inputs/TaskTitleInput';
-import TaskNotesInput from './components/inputs/TaskNotesInput';
-import TaskDueDateInput from './components/inputs/TaskDueDateInput';
-import TaskCollectionInput from './components/inputs/TaskCollectionInput';
+import { useRouter } from "next/navigation";
+import FunctionButtons from "./components/FunctionButtons";
+import DatePickerPrompt from "./components/prompts/DatePickerPrompt";
+import CollectionChooserPrompt from "./components/prompts/CollectionChooserPrompt";
+import TaskTitleInput from "./components/inputs/TaskTitleInput";
+import TaskNotesInput from "./components/inputs/TaskNotesInput";
+import TaskDueDateInput from "./components/inputs/TaskDueDateInput";
+import TaskCollectionInput from "./components/inputs/TaskCollectionInput";
 
 function CreateModal({ isOpen, setIsOpen, success }) {
   const router = useRouter();
 
   const [isDatePickerOpen, setDatePickerOpen] = useState(false);
   const [isCollectionChooserOpen, setCollectionChooserOpen] = useState(false);
-  const [titleError, setTitleError] = useState('');
-  const [collectionError, setCollectionError] = useState('');
+  const [titleError, setTitleError] = useState("");
+  const [collectionError, setCollectionError] = useState("");
 
-  const [title, setTitle] = useState('');
-  const [notes, setNotes] = useState('');
+  const [title, setTitle] = useState("");
+  const [notes, setNotes] = useState("");
   const [dueDate, setDueDate] = useState();
   const [targetCollection, setTargetCollection] = useState();
 
@@ -34,12 +34,12 @@ function CreateModal({ isOpen, setIsOpen, success }) {
     let isValid = true;
 
     if (title.length === 0) {
-      setTitleError('Title cannot be empty');
+      setTitleError("Title cannot be empty");
       isValid = false;
     }
 
     if (targetCollection === undefined) {
-      setCollectionError('A collection must be selected');
+      setCollectionError("A collection must be selected");
       isValid = false;
     }
     return isValid;
@@ -50,15 +50,15 @@ function CreateModal({ isOpen, setIsOpen, success }) {
     setDueDate(undefined);
     setDatePickerOpen(false);
     setCollectionChooserOpen(false);
-    setTitle('');
-    setNotes('');
+    setTitle("");
+    setNotes("");
     setIsOpen(false);
   };
 
   const fetchCollections = async () => {
     try {
-      const db = new PocketBase('http://127.0.0.1:8090');
-      const collections = await db.records.getList('collections', 1, 50);
+      const db = new PocketBase(import.meta.env.VITE_POCKETBASE_URL);
+      const collections = await db.records.getList("collections", 1, 50);
       return collections.items;
     } catch {
       return [];
@@ -67,7 +67,7 @@ function CreateModal({ isOpen, setIsOpen, success }) {
 
   const submitTask = async () => {
     if (isDataValid()) {
-      const db = new PocketBase('http://127.0.0.1:8090');
+      const db = new PocketBase(import.meta.env.VITE_POCKETBASE_URL);
       const task = {
         title,
         notes,
@@ -76,7 +76,7 @@ function CreateModal({ isOpen, setIsOpen, success }) {
         is_done: false,
         created_at: moment().format(),
       };
-      await db.records.create('tasks', task);
+      await db.records.create("tasks", task);
       clearAllAndClose();
       success();
 
@@ -90,32 +90,32 @@ function CreateModal({ isOpen, setIsOpen, success }) {
 
   useEffect(() => {
     if (title.length > 0) {
-      setTitleError('');
+      setTitleError("");
     }
   }, [title]);
 
   useEffect(() => {
     if (targetCollection?.id) {
-      setCollectionError('');
+      setCollectionError("");
     }
   }, [targetCollection]);
 
   return (
     <div
       className={`w-full h-screen fixed flex items-center justify-center overscroll-contain ${
-        isOpen ? 'z-[9999]' : 'z-[-1] transition-all delay-500'
+        isOpen ? "z-[9999]" : "z-[-1] transition-all delay-500"
       } top-0 left-0`}
     >
       <button
         type="button"
         onClick={() => setIsOpen(false)}
         className={`w-full h-full absolute top-0 left-0 transition-colors duration-500 cursor-default ${
-          isOpen ? 'bg-gray-900/20' : 'bg-transparent'
+          isOpen ? "bg-gray-900/20" : "bg-transparent"
         }`}
       />
       <div
         className={`w-1/2 bg-base-100 rounded-2xl shadow-xl relative transition-all duration-500 p-8 ${
-          isOpen ? 'translate-x-0' : 'translate-x-[500%]'
+          isOpen ? "translate-x-0" : "translate-x-[500%]"
         }`}
       >
         <h1 className="text-custom-500 flex items-center gap-2 text-xl font-medium">
