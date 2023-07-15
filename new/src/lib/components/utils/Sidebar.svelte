@@ -66,21 +66,21 @@
 		{/each}
 	</ul>
 	<ul class="mt-16 text-gray-400 flex flex-col relative">
-		<li
-			class="py-4 px-4 relative rounded-lg transition-all overflow-hidden hover:text-custom-500 isolate"
-			class:text-custom-500={$page.url.pathname === '/settings'}
-		>
-			<div
-				class="absolute w-full h-full top-0 left-0 z-[-1] transition-all {$page.url.pathname ===
-					'/settings' && ($theme === 'light' ? 'bg-custom-50' : 'bg-custom-500 opacity-10')}"
-			/>
-			<a href="/settings">
-				<span class="flex items-center gap-5 font-medium">
-					<span class="text-xl -mt-[2px] mgc_settings_1_fill" />
-					Settings
-				</span>
-			</a>
-		</li>
+		<a href="/settings">
+			<li
+				class="py-4 px-4 relative rounded-lg transition-all overflow-hidden hover:text-custom-500 isolate"
+				class:text-custom-500={$page.url.pathname === '/settings'}
+			>
+				<div
+					class="absolute w-full h-full top-0 left-0 z-[-1] transition-all {$page.url.pathname ===
+						'/settings' && ($theme === 'light' ? 'bg-custom-50' : 'bg-custom-500 opacity-10')}"
+				/>
+					<span class="flex items-center gap-5 font-medium">
+						<span class="text-xl -mt-[2px] mgc_settings_1_fill" />
+						Settings
+					</span>
+			</li>
+		</a>
 		<li class="py-3 px-4 rounded-lg">
 			<form action="/logout" method="POST">
 				<button type="submit">

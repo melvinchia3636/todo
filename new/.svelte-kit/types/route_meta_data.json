@@ -24,6 +24,9 @@
 	"/oauth/google": [
 		"src/routes/oauth/google/+server.ts"
 	],
+	"/settings": [
+		"src/routes/+layout.server.ts"
+	],
 	"/signup": [
 		"src/routes/+layout.server.ts"
 	]

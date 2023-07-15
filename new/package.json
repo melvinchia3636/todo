@@ -29,6 +29,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@rgossiaux/svelte-headlessui": "^2.0.0",
 		"autoprefixer": "^10.4.14",
 		"cookie-parse": "^0.4.0",
 		"daisyui": "^3.2.1",
