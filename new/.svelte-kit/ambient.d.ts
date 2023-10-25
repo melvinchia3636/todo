@@ -71,6 +71,7 @@ declare module '$env/static/private' {
 	export const SSH_AUTH_SOCK: string;
 	export const __CF_USER_TEXT_ENCODING: string;
 	export const npm_package_devDependencies_eslint: string;
+	export const HERD_PHP_82_INI_SCAN_DIR: string;
 	export const npm_execpath: string;
 	export const npm_package_devDependencies_tslib: string;
 	export const npm_package_devDependencies__typescript_eslint_eslint_plugin: string;
@@ -86,6 +87,7 @@ declare module '$env/static/private' {
 	export const __CFBundleIdentifier: string;
 	export const USER_ZDOTDIR: string;
 	export const PWD: string;
+	export const VSCODE_NONCE: string;
 	export const npm_package_scripts_preview: string;
 	export const P9K_SSH: string;
 	export const npm_lifecycle_event: string;
@@ -208,6 +210,7 @@ declare module '$env/dynamic/private' {
 		SSH_AUTH_SOCK: string;
 		__CF_USER_TEXT_ENCODING: string;
 		npm_package_devDependencies_eslint: string;
+		HERD_PHP_82_INI_SCAN_DIR: string;
 		npm_execpath: string;
 		npm_package_devDependencies_tslib: string;
 		npm_package_devDependencies__typescript_eslint_eslint_plugin: string;
@@ -223,6 +226,7 @@ declare module '$env/dynamic/private' {
 		__CFBundleIdentifier: string;
 		USER_ZDOTDIR: string;
 		PWD: string;
+		VSCODE_NONCE: string;
 		npm_package_scripts_preview: string;
 		P9K_SSH: string;
 		npm_lifecycle_event: string;
